@@ -1,0 +1,29 @@
+name: Ошибка поведения скилла
+description: Воспроизводимый случай, в котором скилл принял неподходящее решение
+title: "[behavior] "
+body:
+  - type: textarea
+    id: prompt
+    attributes:
+      label: Исходное задание и материалы
+      description: Удалите личные данные и секреты. Достаточно минимального примера.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Версия скилла, агент и модель
+      description: Commit SHA или редакция процесса; неизвестные значения так и укажите.
+  - type: textarea
+    id: observed
+    attributes:
+      label: Что произошло
+      description: Артефакт, снимок или короткий фрагмент ответа. Отделите наблюдение от предположения о причине.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Какого результата вы ожидали
+    validations:
+      required: true

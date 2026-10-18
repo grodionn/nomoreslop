@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+.local/
+node_modules/
+test-results/
+playwright-report/
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
