@@ -1,5 +1,5 @@
-Что изменилось в поведении или результате и почему:
+What behavior or result changed, and why:
 
-Как это проверено (для изменения дизайна — широкий и узкий рендер):
+How it was checked (include wide and narrow renders for design changes):
 
-Что осталось непроверенным:
+What remains unchecked:

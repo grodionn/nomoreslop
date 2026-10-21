@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Copy the self-contained skill into a discoverable directory without overwriting."""
+"""Copy a self-contained skill into a discoverable directory without overwriting."""
 
 import argparse
 from pathlib import Path
@@ -7,32 +7,36 @@ import shutil
 import sys
 
 
-SOURCE = Path(__file__).resolve().parents[1] / "skills" / "nomoreslop-design"
+SKILLS = ("nomoreslop-design", "nomoreslop-writing", "nomoreslop-3d", "nomoreslop")
+SOURCE = Path(__file__).resolve().parents[1] / "skills"
 
 
-def install(destination):
+def install(destination, skill="nomoreslop-design"):
+    if skill not in SKILLS:
+        raise ValueError(f"Unknown skill: {skill}")
     destination = Path(destination).expanduser().absolute()
     if destination.exists() or destination.is_symlink():
         raise FileExistsError(f"Destination already exists; inspect it before updating: {destination}")
     destination.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copytree(SOURCE, destination, ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
+    shutil.copytree(SOURCE / skill, destination, ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
     return destination
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--skill", choices=SKILLS, default="nomoreslop-design", help="Skill to install (default: nomoreslop-design)")
     destinations = parser.add_mutually_exclusive_group()
     destinations.add_argument("--project", type=Path, help="Install under PROJECT/.agents/skills")
-    destinations.add_argument("--dest", type=Path, help="Exact destination folder, including nomoreslop-design")
+    destinations.add_argument("--dest", type=Path, help="Exact destination folder, including the skill name")
     args = parser.parse_args()
     if args.dest is not None:
         destination = args.dest
     elif args.project is not None:
-        destination = args.project / ".agents" / "skills" / "nomoreslop-design"
+        destination = args.project / ".agents" / "skills" / args.skill
     else:
-        destination = Path.home() / ".agents" / "skills" / "nomoreslop-design"
+        destination = Path.home() / ".agents" / "skills" / args.skill
     try:
-        print(f"Installed: {install(destination)}")
+        print(f"Installed: {install(destination, args.skill)}")
     except OSError as error:
         print(f"ERROR: {error}", file=sys.stderr)
         return 2

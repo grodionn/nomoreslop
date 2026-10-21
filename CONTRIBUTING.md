@@ -1,10 +1,10 @@
-# Внесение изменений
+# Contributing
 
-Начните с воспроизводимой проблемы и ожидаемого поведения. Сохраняйте границы задачи: предпочтение в одном проекте не становится общим запретом.
+Start with a reproducible problem and the expected behavior. Keep the change scoped: a preference from one project must not become a universal restriction.
 
-Общие решения остаются в `SKILL.md`, подробности — в соответствующих справочниках. Для изменения существующего правила обычно достаточно уточнить его условия.
+Keep shared decisions in `SKILL.md` and detailed guidance in the relevant reference library. When updating an existing rule, clarifying when it applies is usually enough. Write contributor documentation in English; preserve language-specific examples and rules in the skill library.
 
-После правки каталога обновите индексы и запустите проверки:
+After changing the library, regenerate the indexes and run all checks from the repository root with Python 3.9+:
 
 ```sh
 python skills/nomoreslop-design/scripts/library.py build-index
@@ -13,6 +13,8 @@ python -m unittest discover -s tests -p "test_*.py" -v
 python scripts/check_repo.py
 ```
 
-Если изменилось поведение скилла, повторите затронутый сценарий в отдельном контексте. Укажите фактический результат и оставшиеся ограничения.
+If skill behavior changes, repeat the affected scenario in a fresh context. Report the actual result and remaining limitations. Package checks do not assess visual quality.
 
-Материалы диалогов и исходники чужих проектов храните в `.local/`. Демонстрационные материалы должны быть подготовлены для распространения и согласованы с их владельцем.
+Keep conversations, attachments, screenshots, third-party project sources, and raw work logs only in the ignored `.local/` directory. Receiving material in a conversation does not grant permission to publish it. Use demonstration materials only after their contents and quality have been reviewed and publication approved by the owner.
+
+Keep the repository private until the owner has reviewed the prepared contents and explicitly authorized public access.

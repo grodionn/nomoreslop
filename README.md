@@ -1,34 +1,64 @@
 # nomoreslop
 
-Скилл для осмысленного веб-дизайна.
+Agent skills for website content, interface design, and 3D visuals. The workflow starts with the visitor's task and real content, then develops composition, visual detail, and working interactions.
 
-Помогает разобраться в задаче, выбрать направление и довести интерфейс до цельного результата. Подходит для создания страниц и работы с существующим дизайном.
+| Skill | Use it for |
+| --- | --- |
+| [nomoreslop](skills/nomoreslop/SKILL.md) | Coordinate the specialists around one shared brief |
+| [nomoreslop-writing](skills/nomoreslop-writing/SKILL.md) | Page content, product voice, actions, forms, and interface states |
+| [nomoreslop-design](skills/nomoreslop-design/SKILL.md) | Art direction, composition, typography, imagery, motion, and interface review |
+| [nomoreslop-3d](skills/nomoreslop-3d/SKILL.md) | Subjects, models, materials, animation, and scene performance |
 
-## Установка
+## Install
 
-Нужен агент с поддержкой скиллов. Скопируйте папку `skills/nomoreslop-design` в его каталог скиллов.
-
-Для Codex можно использовать установщик, Python 3.9+:
+With Node.js and the [Skills CLI](https://skills.sh/docs/cli):
 
 ```sh
-python scripts/install_skill.py
+npx skills add grodionn/nomoreslop
 ```
 
-Он устанавливает скилл в `~/.agents/skills/nomoreslop-design` и не перезаписывает существующую копию.
+Select all four skills for the complete workflow. To install only design in a Codex project:
 
-## Использование
+```sh
+npx skills add grodionn/nomoreslop --skill nomoreslop-design --agent codex
+```
+
+Add `--global` to install across projects. This repository is currently private; GitHub access is required.
+
+Alternatively, clone the repository and use Python 3.9+ without third-party packages:
+
+```sh
+git clone https://github.com/grodionn/nomoreslop.git
+cd nomoreslop
+python scripts/install_skill.py --skill nomoreslop
+python scripts/install_skill.py --skill nomoreslop-writing
+python scripts/install_skill.py --skill nomoreslop-design
+python scripts/install_skill.py --skill nomoreslop-3d
+```
+
+The local installer copies one skill to `~/.agents/skills/<skill>` and refuses to overwrite an existing installation. Use `--project <path>` for a project's `.agents/skills` directory. Without `--skill`, it installs design. Install the specialists alongside the coordinator.
+
+## Use
 
 ```text
-Используй $nomoreslop-design для этой страницы.
+Use $nomoreslop to redesign this page. The audience is ...,
+the main action is ..., and these are the materials to preserve: ...
+Write the interface copy in English.
 ```
 
-Добавьте описание задачи и имеющиеся материалы.
+Use `$nomoreslop-writing`, `$nomoreslop-design`, or `$nomoreslop-3d` directly for a focused task. Include existing materials, constraints, and decisions you want to delegate. The coordinator shares the brief between specialists and brings in 3D when the task calls for it.
 
-## Документация
+## Language and scope
 
-- [Инструкции скилла](skills/nomoreslop-design/SKILL.md)
-- [Практика использования](docs/BEST_PRACTICES.md)
-- [Проверка](docs/TESTING.md)
-- [Внесение изменений](CONTRIBUTING.md)
+The README and contributor documentation are in English. Skill instructions, reference libraries, and behavior scenarios are currently in Russian. Specify the target language and locale in your prompt; a full English translation of the skill library is still pending.
 
-[MIT](LICENSE).
+The package contains instructions, reference material, Python tools, and tests. Automated checks validate the tools and package structure; they do not establish design quality or demonstrate an improvement over an agent without these skills.
+
+## Documentation
+
+- [Usage guidance](docs/BEST_PRACTICES.md)
+- [Testing and limitations](docs/TESTING.md)
+- [Contributing](CONTRIBUTING.md)
+- [Interface writing research (Russian)](skills/nomoreslop-writing/references/research.md)
+
+[MIT license](LICENSE).

@@ -2,6 +2,7 @@ __pycache__/
 *.py[cod]
 .venv/
 .local/
+.codex-remote-attachments/
 node_modules/
 test-results/
 playwright-report/

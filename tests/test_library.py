@@ -65,6 +65,26 @@ class LibraryTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual([h[0] for h in library.HEADING.findall(result.stdout)], ["MAT-01", "TXT-03"])
 
+    def test_stage_loads_complete_records_without_other_stages(self):
+        all_ids = []
+        for stage, identifiers in library.START_STAGES.items():
+            with self.subTest(stage=stage):
+                result = cli("start", "--stage", stage)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertEqual([h[0] for h in library.HEADING.findall(result.stdout)], list(identifiers))
+                self.assertLess(len(result.stdout), len(cli("start").stdout))
+                for record in library.load_records():
+                    if record.identifier in identifiers:
+                        self.assertIn(record.body, result.stdout)
+                all_ids.extend(identifiers)
+        self.assertCountEqual(all_ids, library.START_IDS)
+        self.assertEqual(len(all_ids), len(set(all_ids)))
+
+    def test_unknown_stage_fails_without_partial_output(self):
+        result = cli("start", "--stage", "unknown")
+        self.assertNotEqual(result.returncode, 0)
+        self.assertEqual(result.stdout, "")
+
     def test_unknown_id_fails_before_printing_partial_results(self):
         result = cli("show", "TXT-01", "UNKNOWN-99")
         self.assertNotEqual(result.returncode, 0)
@@ -82,7 +102,7 @@ class LibraryTests(unittest.TestCase):
     def test_read_commands_do_not_mutate_the_package(self):
         with isolated_package() as root:
             before = fingerprint(root)
-            for args in [("start",), ("show", "TXT-01"), ("index", "technique"), ("check",), ("stats",)]:
+            for args in [("start",), ("start", "--stage", "content"), ("show", "TXT-01"), ("index", "technique"), ("check",), ("stats",)]:
                 result = cli(*args, root=root)
                 self.assertEqual(result.returncode, 0, result.stderr)
             self.assertEqual(fingerprint(root), before)

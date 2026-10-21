@@ -20,10 +20,22 @@ ROOT = Path(__file__).resolve().parents[1]
 REFERENCES = ROOT / "references"
 CORE_CHAR_BUDGET = 20_000
 START_IDS = (
-    "TXT-01", "TXT-03", "TXT-04", "TXT-11", "TXT-37", "LAY-11", "LAY-17",
-    "CTL-13", "CTL-14",
-    "IMG-09", "MOT-13", "PRC-10", "PRC-11", "PRC-12",
+    "TXT-01", "TXT-03", "TXT-04", "TXT-08", "TXT-11", "TXT-37",
+    "LAY-11", "LAY-17", "LAY-18", "LAY-19", "TYP-02", "TYP-09", "TYP-14",
+    "CTL-13", "CTL-14", "CTL-15", "CTL-16",
+    "IMG-09", "MOT-13", "MOT-14", "PRC-10", "PRC-11", "PRC-12", "PRC-15", "PRC-16",
 )
+START_STAGES = {
+    "content": (
+        "TXT-01", "TXT-03", "TXT-04", "TXT-08", "TXT-11", "TXT-37",
+        "LAY-18", "PRC-12", "PRC-16",
+    ),
+    "composition": (
+        "LAY-11", "LAY-17", "LAY-19", "TYP-02", "TYP-09", "TYP-14",
+        "IMG-09", "PRC-10", "PRC-15",
+    ),
+    "detail": ("CTL-13", "CTL-14", "CTL-15", "CTL-16", "MOT-13", "MOT-14", "PRC-11"),
+}
 GROUPS = (
     ("antipattern", "TXT", "Текст", "antipatterns/text.md"),
     ("antipattern", "LAY", "Композиция", "antipatterns/layout.md"),
@@ -102,11 +114,11 @@ def render_index(records: list[Record], kind: str) -> str:
         lines = [
             "# Индекс антипаттернов",
             "",
-            "Читай один раз; подробности выбирай по текущей задаче. Название — короткий симптом, полные условия находятся в записи.",
+            "Открывай для поиска дополнительных записей по текущему этапу. Название — короткий симптом, полные условия находятся в записи.",
             "",
             "**Д** — исключено из автоматического выбора; **К** — контекстный сигнал; **У** — ошибка при описанных условиях. Явное задание и авторский материал учитываются. Это каталог решений, а не детектор авторства.",
             "",
-            "Для нового UI и существенного редизайна до макета обязательно прочитай полные стартовые записи: python <путь-к-скиллу>/scripts/library.py start. Для локальной задачи или дополнений: python <путь-к-скиллу>/scripts/library.py show TXT-01 LAY-01. Без Python открой нужные заголовки по ID. Не загружай все разделы.",
+            "Для нового UI загружай подробные правила по этапам: python <путь-к-скиллу>/scripts/library.py start --stage content, затем --stage composition, затем --stage detail. Порядок работы и ID для чтения без Python указаны в [поэтапном процессе](staged-workflow.md). Дополнения: python <путь-к-скиллу>/scripts/library.py show TXT-01 LAY-01. Не загружай все разделы заранее.",
         ]
         filename = "antipattern-index.md"
     else:
@@ -218,6 +230,9 @@ def show_stats(records: list[Record], encoding_name: str | None) -> None:
         "new_ui_start": core + selected(*START_IDS),
         "new_ui_brief": core + selected(*START_IDS)
         + (REFERENCES / "brief-and-decisions.md").read_text(encoding="utf-8"),
+        "art_direction_example": core + selected(*START_IDS)
+        + (REFERENCES / "art-direction.md").read_text(encoding="utf-8")
+        + selected("CMP-06", "CMP-11", "FX-10", "BG-04"),
         "redesign_brief_example": core + selected(*START_IDS)
         + (REFERENCES / "brief-and-decisions.md").read_text(encoding="utf-8")
         + (REFERENCES / "redesign-workflow.md").read_text(encoding="utf-8")
@@ -235,6 +250,10 @@ def show_stats(records: list[Record], encoding_name: str | None) -> None:
         + (REFERENCES / "technique-index.md").read_text(encoding="utf-8")
         + selected("FX-01", "FX-03", "FX-10", "MOT-09"),
     }
+    entry = (ROOT / "SKILL.md").read_text(encoding="utf-8")
+    workflow = (REFERENCES / "staged-workflow.md").read_text(encoding="utf-8")
+    for stage, identifiers in START_STAGES.items():
+        packets[f"{stage}_stage"] = entry + workflow + selected(*identifiers)
     all_markdown = "\n".join(
         source.read_text(encoding="utf-8") for source in sorted(ROOT.rglob("*.md"))
     )
@@ -253,7 +272,8 @@ def show_stats(records: list[Record], encoding_name: str | None) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
-    commands.add_parser("start", help="Print the required compact baseline for a new UI or substantial redesign")
+    start = commands.add_parser("start", help="Print baseline records, optionally limited to the current stage")
+    start.add_argument("--stage", choices=tuple(START_STAGES), help="Load only the current stage; omit for the full baseline")
     show = commands.add_parser("show", help="Print only the requested complete records")
     show.add_argument("identifiers", nargs="+")
     index = commands.add_parser("index", help="Print one compact index")
@@ -268,7 +288,7 @@ def main() -> int:
         if args.command in ("start", "show"):
             lookup = {record.identifier: record for record in records}
             requested = (
-                list(START_IDS) if args.command == "start"
+                list(START_STAGES[args.stage] if args.stage else START_IDS) if args.command == "start"
                 else list(dict.fromkeys(item.upper() for item in args.identifiers))
             )
             missing = [identifier for identifier in requested if identifier not in lookup]
