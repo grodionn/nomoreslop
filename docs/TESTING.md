@@ -1,15 +1,16 @@
 # Testing
 
-From the repository root, with Python 3.9+:
+From the repository root, with Python 3.10+:
 
 ```sh
 python skills/nomoreslop-design/scripts/library.py build-index
 python skills/nomoreslop-design/scripts/library.py check
 python -m unittest discover -s tests -p "test_*.py" -v
+python -m unittest discover -s skills/nomoreslop-design/tests -p "test_*.py" -v
 python scripts/check_repo.py
 ```
 
-These commands check library integrity, CLI behavior, installation portability, distribution paths, and local documentation links. They require no third-party packages. CI runs checks on Linux with Python 3.9 and 3.13, and on Windows with Python 3.13.
+These commands check library integrity, CLI behavior, installation portability, distribution paths, local documentation links, resource selection, project-state validation, and text inventory. They require no third-party packages. CI runs checks on Linux with Python 3.10 and 3.13, and on Windows with Python 3.13.
 
 Behavior scenarios require separate runs. Give the agent the prompt and prepared materials; keep expectations with the evaluator. A written scenario is not a completed test. The following scenario documents are currently in Russian:
 

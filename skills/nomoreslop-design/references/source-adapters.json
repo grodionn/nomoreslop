@@ -1,0 +1,1484 @@
+{
+  "schema_version": 1,
+  "updated_on": "2026-10-21",
+  "description": "36 saved entry points (35 bookmarks + Awwwards). Capability and route map, not a universal scraper, live health dashboard, connected MCP declaration, or license grant.",
+  "transports": {
+    "implemented": [
+      "public HTTPS registry JSON inspection/fetch",
+      "bounded HTML/text metadata inspection",
+      "read-only local package/coverage checks"
+    ],
+    "external_available_only_after_current_schema_review": [
+      "authorized MCP",
+      "official documented API/CLI",
+      "official author repository export"
+    ],
+    "never": [
+      "computer use or headless for external reference search",
+      "credential or payment/quota bypass",
+      "automatic package installation or code execution"
+    ]
+  },
+  "sources": [
+    {
+      "id": "mobbin",
+      "name": "Mobbin",
+      "saved_url": "https://mobbin.com/",
+      "canonical_source": "mobbin",
+      "kinds": [
+        "flow",
+        "screen",
+        "section"
+      ],
+      "platforms": [
+        "web",
+        "mobile",
+        "desktop"
+      ],
+      "priority_for": [
+        "flow",
+        "screen",
+        "section"
+      ],
+      "routes": [
+        {
+          "status": "documented_access",
+          "url": "https://docs.mobbin.com/overview",
+          "notes": "MCP and REST by authorized plan; screenshots/flows, not original application code."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "documentation",
+        "selected connector/API/export output unverified until schema review"
+      ],
+      "access_requirements": "Inspect current documented access; use existing authorized tools only; setup/login/payment/quota bypass are not performed",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "dribbble",
+      "name": "Dribbble",
+      "saved_url": "https://dribbble.com/shots/popular",
+      "canonical_source": "dribbble",
+      "kinds": [
+        "composition",
+        "graphic",
+        "typography"
+      ],
+      "platforms": [
+        "web",
+        "mobile",
+        "desktop"
+      ],
+      "priority_for": [
+        "composition",
+        "graphic",
+        "typography"
+      ],
+      "routes": [
+        {
+          "status": "public_page",
+          "url": "https://dribbble.com/shots/popular",
+          "notes": "Public shot/card and author links; a shot is not code or an award."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "HTML metadata",
+        "selected item export format unverified"
+      ],
+      "access_requirements": "Public selected route only; premium/member variants and third-party assets require their own rights/access review",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "freefrontend",
+      "name": "FreeFrontend",
+      "saved_url": "https://freefrontend.com/",
+      "canonical_source": "freefrontend",
+      "kinds": [
+        "component",
+        "animation",
+        "section"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "component",
+        "animation",
+        "section"
+      ],
+      "routes": [
+        {
+          "status": "public_page",
+          "url": "https://freefrontend.com/index.html",
+          "notes": "Selected HTML code block or author CodePen/GitHub. Collection and inline-code page formats differ; per-author terms."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "HTML metadata",
+        "selected item export format unverified"
+      ],
+      "access_requirements": "Public selected route only; premium/member variants and third-party assets require their own rights/access review",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "21st",
+      "name": "21st.dev",
+      "saved_url": "https://21st.dev/community/components",
+      "canonical_source": "21st",
+      "kinds": [
+        "component",
+        "section",
+        "tokens"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "component",
+        "section",
+        "tokens"
+      ],
+      "routes": [
+        {
+          "status": "documented_access",
+          "url": "https://help.21st.dev/ai/mcp",
+          "notes": "Use author public registry/repo first. Search/metadata differ from quota-limited code; CLI/MCP do not reset quota."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "documentation",
+        "selected connector/API/export output unverified until schema review"
+      ],
+      "access_requirements": "Inspect current documented access; use existing authorized tools only; setup/login/payment/quota bypass are not performed",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "easing-wizard",
+      "name": "Easing Wizard",
+      "saved_url": "https://easingwizard.com/",
+      "canonical_source": "easing-wizard",
+      "kinds": [
+        "animation",
+        "easing"
+      ],
+      "platforms": [
+        "web",
+        "mobile",
+        "desktop"
+      ],
+      "priority_for": [
+        "animation",
+        "easing"
+      ],
+      "routes": [
+        {
+          "status": "documented_route",
+          "url": "https://api.easingwizard.com/docs",
+          "notes": "REST/MCP described by official page; retrieve parameters after current schema review, not generator source."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "documentation",
+        "selected connector/API/export output unverified until schema review"
+      ],
+      "access_requirements": "Inspect current documented access; use existing authorized tools only; setup/login/payment/quota bypass are not performed",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "lucide-animated",
+      "name": "Lucide Animated",
+      "saved_url": "https://lucide-animated.com/",
+      "canonical_source": "lucide-animated",
+      "kinds": [
+        "icon",
+        "animation"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "icon",
+        "animation"
+      ],
+      "routes": [
+        {
+          "status": "documented_route",
+          "url": "https://lucide-animated.com/",
+          "notes": "Docs/llms.txt/shadcn channel; exact current item endpoint and states must be checked."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "documentation",
+        "selected connector/API/export output unverified until schema review"
+      ],
+      "access_requirements": "Inspect current documented access; use existing authorized tools only; setup/login/payment/quota bypass are not performed",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "animateicons",
+      "name": "AnimateIcons",
+      "saved_url": "https://animateicons.in/",
+      "canonical_source": "animateicons",
+      "kinds": [
+        "icon",
+        "animation"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "icon",
+        "animation"
+      ],
+      "routes": [
+        {
+          "status": "documented_route",
+          "url": "https://animateicons.in/",
+          "notes": "Page describes packages/shadcn/MCP/CLI; inspect current format, stack and per-item rights."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "documentation",
+        "selected connector/API/export output unverified until schema review"
+      ],
+      "access_requirements": "Inspect current documented access; use existing authorized tools only; setup/login/payment/quota bypass are not performed",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "aura-gradients",
+      "name": "Aura Gradients",
+      "saved_url": "https://auragradients.vercel.app/?gradient=copper-shadow",
+      "canonical_source": "aura-gradients",
+      "kinds": [
+        "background",
+        "tokens"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "background",
+        "tokens"
+      ],
+      "routes": [
+        {
+          "status": "unverified",
+          "url": "https://auragradients.vercel.app/?gradient=copper-shadow",
+          "notes": "Saved preset only. Page delivery and parameter export were not confirmed; no fabricated endpoint."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Saved entry/purpose only; export endpoint unverified"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "selected item format unverified"
+      ],
+      "access_requirements": "Inspect current documented access; use existing authorized tools only; setup/login/payment/quota bypass are not performed",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "react-bits",
+      "name": "React Bits",
+      "saved_url": "https://reactbits.dev/",
+      "canonical_source": "react-bits",
+      "kinds": [
+        "component",
+        "animation",
+        "background",
+        "shader",
+        "section"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "component",
+        "animation",
+        "background"
+      ],
+      "routes": [
+        {
+          "status": "public_registry",
+          "url": "https://reactbits.dev/r/{name}.json",
+          "notes": "Explicit registry variant JS/TS and CSS/TW. Pro manifest is metadata; not proof of Pro source availability."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-21",
+        "url": "https://reactbits.dev/r/SplitText-TS-TW.json",
+        "scope": "Public JSON files[].content retrieved; not integrated or rendered"
+      },
+      "source_files_retrieved_in_research": true,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "registry JSON",
+        "inline source files (selected item only)"
+      ],
+      "access_requirements": "Public selected route only; premium/member variants and third-party assets require their own rights/access review",
+      "cli_capabilities": [
+        "inspect",
+        "fetch (explicit resolved registry URL only)"
+      ]
+    },
+    {
+      "id": "aceternity-aurora",
+      "name": "Aceternity Aurora Background",
+      "saved_url": "https://ui.aceternity.com/components/aurora-background",
+      "canonical_source": "aceternity",
+      "kinds": [
+        "background",
+        "animation"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "background",
+        "animation"
+      ],
+      "routes": [
+        {
+          "status": "public_registry",
+          "url": "https://ui.aceternity.com/registry/{name}.json",
+          "notes": "Specific entry point of same publisher as Aceternity; not an independent source. Open components and Pro differ."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "registry JSON",
+        "inline source files (selected item only)"
+      ],
+      "access_requirements": "Public selected route only; premium/member variants and third-party assets require their own rights/access review",
+      "cli_capabilities": [
+        "inspect",
+        "fetch (explicit resolved registry URL only)"
+      ]
+    },
+    {
+      "id": "refero",
+      "name": "Refero",
+      "saved_url": "https://refero.design/web-apps",
+      "canonical_source": "refero",
+      "kinds": [
+        "flow",
+        "screen",
+        "section"
+      ],
+      "platforms": [
+        "web",
+        "mobile",
+        "desktop"
+      ],
+      "priority_for": [
+        "flow",
+        "screen",
+        "section"
+      ],
+      "routes": [
+        {
+          "status": "documented_access",
+          "url": "https://refero.design/mcp",
+          "notes": "MCP by existing access; screenshots/flows, not source application. HTTP MCP page returned SPA shell on 21 Oct."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-21",
+        "url": "https://refero.design/mcp",
+        "scope": "HTTP200 SPA shell, source/access cannot be inferred"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "documentation",
+        "selected connector/API/export output unverified until schema review"
+      ],
+      "access_requirements": "Inspect current documented access; use existing authorized tools only; setup/login/payment/quota bypass are not performed",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "refero-styles",
+      "name": "Refero Styles",
+      "saved_url": "https://styles.refero.design/",
+      "canonical_source": "refero",
+      "kinds": [
+        "tokens",
+        "composition",
+        "design-code"
+      ],
+      "platforms": [
+        "web",
+        "mobile",
+        "desktop"
+      ],
+      "priority_for": [
+        "tokens",
+        "composition",
+        "design-code"
+      ],
+      "routes": [
+        {
+          "status": "public_page",
+          "url": "https://styles.refero.design/",
+          "notes": "Selected public style card may expose DESIGN.md/CSS/Tailwind. Interpreted recommendations are not the original brand source."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "HTML metadata",
+        "selected item export format unverified"
+      ],
+      "access_requirements": "Public selected route only; premium/member variants and third-party assets require their own rights/access review",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "componentry",
+      "name": "Componentry",
+      "saved_url": "https://componentry.dev/",
+      "canonical_source": "componentry",
+      "kinds": [
+        "component",
+        "animation",
+        "section"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "component",
+        "animation",
+        "section"
+      ],
+      "routes": [
+        {
+          "status": "public_registry",
+          "url": "https://componentry.dev/r/{name}.json",
+          "notes": "Author registry and https://github.com/harshjdhv/componentry ; dependency declarations still need import review."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-21",
+        "url": "https://componentry.dev/r/magnetic-dock.json",
+        "scope": "Public JSON files[].content retrieved; helper remains unresolved"
+      },
+      "source_files_retrieved_in_research": true,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "registry JSON",
+        "inline source files (selected item only)"
+      ],
+      "access_requirements": "Public selected route only; premium/member variants and third-party assets require their own rights/access review",
+      "cli_capabilities": [
+        "inspect",
+        "fetch (explicit resolved registry URL only)"
+      ]
+    },
+    {
+      "id": "motion",
+      "name": "Motion",
+      "saved_url": "https://motion.dev/",
+      "canonical_source": "motion",
+      "kinds": [
+        "animation",
+        "easing",
+        "component"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "animation",
+        "easing",
+        "component"
+      ],
+      "routes": [
+        {
+          "status": "documented_route",
+          "url": "https://motion.dev/docs/ai-kit-install",
+          "notes": "Docs/free library differ from Motion+ examples. Existing authorized MCP only; no assumption premium code is public."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "documentation",
+        "selected connector/API/export output unverified until schema review"
+      ],
+      "access_requirements": "Inspect current documented access; use existing authorized tools only; setup/login/payment/quota bypass are not performed",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "hugeicons",
+      "name": "Hugeicons",
+      "saved_url": "https://hugeicons.com/icons",
+      "canonical_source": "hugeicons",
+      "kinds": [
+        "icon"
+      ],
+      "platforms": [
+        "web",
+        "mobile",
+        "desktop"
+      ],
+      "priority_for": [
+        "icon"
+      ],
+      "routes": [
+        {
+          "status": "public_page",
+          "url": "https://hugeicons.com/icons",
+          "notes": "Official docs/packages, exact icon style and license tier. No assumption every variant is free."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "HTML metadata",
+        "selected item export format unverified"
+      ],
+      "access_requirements": "Public selected route only; premium/member variants and third-party assets require their own rights/access review",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "motionsites",
+      "name": "MotionSites",
+      "saved_url": "https://motionsites.ai/",
+      "canonical_source": "motionsites",
+      "kinds": [
+        "composition",
+        "design-code",
+        "section",
+        "animation"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "composition",
+        "design-code",
+        "section"
+      ],
+      "routes": [
+        {
+          "status": "documented_access",
+          "url": "https://motionsites.ai/mcp",
+          "notes": "Official MCP docs describe design prompts; inspect connected schema. Prompt is a specification, not received source."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "documentation",
+        "selected connector/API/export output unverified until schema review"
+      ],
+      "access_requirements": "Inspect current documented access; use existing authorized tools only; setup/login/payment/quota bypass are not performed",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "aceternity",
+      "name": "Aceternity UI",
+      "saved_url": "https://ui.aceternity.com/components",
+      "canonical_source": "aceternity",
+      "kinds": [
+        "component",
+        "section",
+        "animation",
+        "background"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "component",
+        "section",
+        "animation"
+      ],
+      "routes": [
+        {
+          "status": "public_registry",
+          "url": "https://ui.aceternity.com/registry/{name}.json",
+          "notes": "AI recommendations/catalog then selected public registry file. Open registry is not a Pro export."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-21",
+        "url": "https://ui.aceternity.com/registry/3d-marquee.json",
+        "scope": "Public JSON retrieved; dependency metadata missing motion/react and local helper"
+      },
+      "source_files_retrieved_in_research": true,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "registry JSON",
+        "inline source files (selected item only)"
+      ],
+      "access_requirements": "Public selected route only; premium/member variants and third-party assets require their own rights/access review",
+      "cli_capabilities": [
+        "inspect",
+        "fetch (explicit resolved registry URL only)"
+      ]
+    },
+    {
+      "id": "horizonx",
+      "name": "HorizonX",
+      "saved_url": "https://horizonx.so/",
+      "canonical_source": "horizonx",
+      "kinds": [
+        "section",
+        "component",
+        "background",
+        "shader",
+        "graphic",
+        "tokens",
+        "design-code"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "section",
+        "component",
+        "background"
+      ],
+      "routes": [
+        {
+          "status": "documented_access",
+          "url": "https://horizonx.so/mcp",
+          "notes": "MCP docs describe inspect/export and Library/download separately; membership, quotas and chosen output format apply."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "documentation",
+        "selected connector/API/export output unverified until schema review"
+      ],
+      "access_requirements": "Inspect current documented access; use existing authorized tools only; setup/login/payment/quota bypass are not performed",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "animata",
+      "name": "Animata",
+      "saved_url": "https://animata.design/",
+      "canonical_source": "animata",
+      "kinds": [
+        "component",
+        "section",
+        "animation"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "component",
+        "section",
+        "animation"
+      ],
+      "routes": [
+        {
+          "status": "public_page",
+          "url": "https://animata.design/",
+          "notes": "Selected copy/paste component then author source; current dependencies, rights and stack require review."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "HTML metadata",
+        "selected item export format unverified"
+      ],
+      "access_requirements": "Public selected route only; premium/member variants and third-party assets require their own rights/access review",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "magic-ui",
+      "name": "Magic UI",
+      "saved_url": "https://magicui.design/docs/components",
+      "canonical_source": "magic-ui",
+      "kinds": [
+        "component",
+        "section",
+        "animation"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "component",
+        "section",
+        "animation"
+      ],
+      "routes": [
+        {
+          "status": "documented_route",
+          "url": "https://magicui.design/docs/mcp",
+          "notes": "Official docs/MCP/code/GitHub; distinguish public components and Pro."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "documentation",
+        "selected connector/API/export output unverified until schema review"
+      ],
+      "access_requirements": "Inspect current documented access; use existing authorized tools only; setup/login/payment/quota bypass are not performed",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "inspira-ui",
+      "name": "Inspira UI",
+      "saved_url": "https://inspira-ui.com/docs/en/components",
+      "canonical_source": "inspira-ui",
+      "kinds": [
+        "component",
+        "section",
+        "animation"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "component",
+        "section",
+        "animation"
+      ],
+      "routes": [
+        {
+          "status": "documented_route",
+          "url": "https://docs.inspira-ui.com/docs/en/getting-started/installation",
+          "notes": "Vue/Nuxt and current Tailwind. React/native conversion is a separate implementation, not direct compatibility."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "documentation",
+        "selected connector/API/export output unverified until schema review"
+      ],
+      "access_requirements": "Inspect current documented access; use existing authorized tools only; setup/login/payment/quota bypass are not performed",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "animate-ui",
+      "name": "Animate UI",
+      "saved_url": "https://animate-ui.com/docs/primitives",
+      "canonical_source": "animate-ui",
+      "kinds": [
+        "component",
+        "animation"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "component",
+        "animation"
+      ],
+      "routes": [
+        {
+          "status": "documented_route",
+          "url": "https://animate-ui.com/docs/primitives",
+          "notes": "Chosen primitive current docs/install/MCP; do not guess registry namespace or call unconnected tools."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "documentation",
+        "selected connector/API/export output unverified until schema review"
+      ],
+      "access_requirements": "Inspect current documented access; use existing authorized tools only; setup/login/payment/quota bypass are not performed",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "hover",
+      "name": "Hover.dev",
+      "saved_url": "https://www.hover.dev/components",
+      "canonical_source": "hover",
+      "kinds": [
+        "component",
+        "section",
+        "animation"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "component",
+        "section",
+        "animation"
+      ],
+      "routes": [
+        {
+          "status": "public_page",
+          "url": "https://www.hover.dev/components",
+          "notes": "Selected public card/source; confirm access, framework, format and author terms."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "HTML metadata",
+        "selected item export format unverified"
+      ],
+      "access_requirements": "Public selected route only; premium/member variants and third-party assets require their own rights/access review",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "motionin",
+      "name": "Motionin",
+      "saved_url": "https://www.motionin.design/",
+      "canonical_source": "motionin",
+      "kinds": [
+        "section",
+        "animation",
+        "composition"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "section",
+        "animation",
+        "composition"
+      ],
+      "routes": [
+        {
+          "status": "unverified_export",
+          "url": "https://www.motionin.design/",
+          "notes": "Interactive section catalog; code format/access/export not universally confirmed."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Saved entry/purpose only; export endpoint unverified"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "selected item format unverified"
+      ],
+      "access_requirements": "Inspect current documented access; use existing authorized tools only; setup/login/payment/quota bypass are not performed",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "scrolltide",
+      "name": "Scrolltide",
+      "saved_url": "https://www.scrolltide.co/",
+      "canonical_source": "scrolltide",
+      "kinds": [
+        "section",
+        "composition",
+        "animation",
+        "design-code"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "section",
+        "composition",
+        "animation"
+      ],
+      "routes": [
+        {
+          "status": "public_page",
+          "url": "https://www.scrolltide.co/",
+          "notes": "Free/Premium items may be prompt/template/component; inspect actual contents. Name is not a reason to impose scroll."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "HTML metadata",
+        "selected item export format unverified"
+      ],
+      "access_requirements": "Public selected route only; premium/member variants and third-party assets require their own rights/access review",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "calltoinspiration",
+      "name": "CallToInspiration",
+      "saved_url": "https://calltoinspiration.com/",
+      "canonical_source": "calltoinspiration",
+      "kinds": [
+        "flow",
+        "screen",
+        "composition"
+      ],
+      "platforms": [
+        "web",
+        "mobile",
+        "desktop"
+      ],
+      "priority_for": [
+        "flow",
+        "screen",
+        "composition"
+      ],
+      "routes": [
+        {
+          "status": "shell_observed",
+          "url": "https://calltoinspiration.com/",
+          "notes": "HTTP inspection returned shell; locate allowed public card or other source. No source-code export was confirmed."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "selected item format unverified"
+      ],
+      "access_requirements": "Inspect current documented access; use existing authorized tools only; setup/login/payment/quota bypass are not performed",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "reicon",
+      "name": "Reicon",
+      "saved_url": "https://reicon.dev/",
+      "canonical_source": "reicon",
+      "kinds": [
+        "icon",
+        "graphic"
+      ],
+      "platforms": [
+        "web",
+        "mobile",
+        "desktop"
+      ],
+      "priority_for": [
+        "icon",
+        "graphic"
+      ],
+      "routes": [
+        {
+          "status": "documented_route",
+          "url": "https://reicon.dev/",
+          "notes": "Official page describes SVG, packages and reicon-mcp; inspect current access and format first."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "documentation",
+        "selected connector/API/export output unverified until schema review"
+      ],
+      "access_requirements": "Inspect current documented access; use existing authorized tools only; setup/login/payment/quota bypass are not performed",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "threeui",
+      "name": "ThreeUI",
+      "saved_url": "https://threeui.com/browse?sort=recent",
+      "canonical_source": "threeui",
+      "kinds": [
+        "component",
+        "section",
+        "shader",
+        "graphic",
+        "animation"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "component",
+        "section",
+        "shader"
+      ],
+      "routes": [
+        {
+          "status": "unverified_export",
+          "url": "https://threeui.com/browse?sort=recent",
+          "notes": "Browse URL failed in prior check; public cards searchable. Installation/MCP links are not verified export tools."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Saved entry/purpose only; export endpoint unverified"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "selected item format unverified"
+      ],
+      "access_requirements": "Inspect current documented access; use existing authorized tools only; setup/login/payment/quota bypass are not performed",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "60fps",
+      "name": "60fps",
+      "saved_url": "https://60fps.design/shots/filter/3d",
+      "canonical_source": "60fps",
+      "kinds": [
+        "flow",
+        "screen",
+        "animation"
+      ],
+      "platforms": [
+        "mobile"
+      ],
+      "priority_for": [
+        "flow",
+        "screen",
+        "animation"
+      ],
+      "routes": [
+        {
+          "status": "documented_access",
+          "url": "https://60fps.design/mcp",
+          "notes": "Official MCP describes motion analysis/SwiftUI at its access level; not a ready React DOM component."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "documentation",
+        "selected connector/API/export output unverified until schema review"
+      ],
+      "access_requirements": "Inspect current documented access; use existing authorized tools only; setup/login/payment/quota bypass are not performed",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "shaders",
+      "name": "Shaders",
+      "saved_url": "https://shaders.com/docs/components",
+      "canonical_source": "shaders",
+      "kinds": [
+        "shader",
+        "background",
+        "component"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "shader",
+        "background",
+        "component"
+      ],
+      "routes": [
+        {
+          "status": "public_page",
+          "url": "https://shaders.com/docs/components",
+          "notes": "Chosen component docs, parameters, runtime/cost and terms; no automatic heavyweight background."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "HTML metadata",
+        "selected item export format unverified"
+      ],
+      "access_requirements": "Public selected route only; premium/member variants and third-party assets require their own rights/access review",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "codefronts",
+      "name": "CodeFronts",
+      "saved_url": "https://codefronts.com/",
+      "canonical_source": "codefronts",
+      "kinds": [
+        "component",
+        "background",
+        "tokens"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "component",
+        "background",
+        "tokens"
+      ],
+      "routes": [
+        {
+          "status": "public_page",
+          "url": "https://codefronts.com/",
+          "notes": "Selected CSS/Tailwind card/generator output or author; universal MCP/API not confirmed."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "HTML metadata",
+        "selected item export format unverified"
+      ],
+      "access_requirements": "Public selected route only; premium/member variants and third-party assets require their own rights/access review",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "uiverse",
+      "name": "Uiverse",
+      "saved_url": "https://uiverse.io/elements",
+      "canonical_source": "uiverse",
+      "kinds": [
+        "component",
+        "animation"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "component",
+        "animation"
+      ],
+      "routes": [
+        {
+          "status": "public_page",
+          "url": "https://uiverse.io/elements",
+          "notes": "Get-code selected card/author only; verify author terms, CSS/Tailwind and demo copy."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "HTML metadata",
+        "selected item export format unverified"
+      ],
+      "access_requirements": "Public selected route only; premium/member variants and third-party assets require their own rights/access review",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "originkit",
+      "name": "Originkit",
+      "saved_url": "https://www.originkit.dev/",
+      "canonical_source": "originkit",
+      "kinds": [
+        "component",
+        "section",
+        "animation"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "component",
+        "section",
+        "animation"
+      ],
+      "routes": [
+        {
+          "status": "documented_access",
+          "url": "https://www.originkit.dev/docs/components",
+          "notes": "CLI/MCP/auth per current docs; Free label does not remove quotas/license."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "documentation",
+        "selected connector/API/export output unverified until schema review"
+      ],
+      "access_requirements": "Inspect current documented access; use existing authorized tools only; setup/login/payment/quota bypass are not performed",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "skiper",
+      "name": "Skiper UI",
+      "saved_url": "https://skiper-ui.com/components",
+      "canonical_source": "skiper",
+      "kinds": [
+        "component",
+        "section",
+        "animation"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "component",
+        "section",
+        "animation"
+      ],
+      "routes": [
+        {
+          "status": "public_page",
+          "url": "https://skiper-ui.com/components",
+          "notes": "Selected How to use/current free-vs-Pro item; no universal free export confirmed."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "HTML metadata",
+        "selected item export format unverified"
+      ],
+      "access_requirements": "Public selected route only; premium/member variants and third-party assets require their own rights/access review",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "watermelon",
+      "name": "Watermelon UI",
+      "saved_url": "https://ui.watermelon.sh/home",
+      "canonical_source": "watermelon",
+      "kinds": [
+        "component",
+        "section",
+        "flow"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "component",
+        "section",
+        "flow"
+      ],
+      "routes": [
+        {
+          "status": "documented_route",
+          "url": "https://ui.watermelon.sh/developers/mcp",
+          "notes": "Official developer page links llms/OpenAPI/MCP/repo; verify current schemas and access before calls."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-20",
+        "scope": "Catalog/documentation review only; no current API/code execution or live availability guarantee"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "documentation",
+        "selected connector/API/export output unverified until schema review"
+      ],
+      "access_requirements": "Inspect current documented access; use existing authorized tools only; setup/login/payment/quota bypass are not performed",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "awwwards",
+      "name": "Awwwards",
+      "saved_url": "https://www.awwwards.com/",
+      "canonical_source": "awwwards",
+      "kinds": [
+        "composition",
+        "section",
+        "graphic",
+        "animation",
+        "design-code"
+      ],
+      "platforms": [
+        "web"
+      ],
+      "priority_for": [
+        "composition",
+        "section",
+        "graphic"
+      ],
+      "routes": [
+        {
+          "status": "public_page",
+          "url": "https://www.awwwards.com/websites/sites_of_the_day/",
+          "notes": "Award/category/date/author card then author site/repo. HTML is reachable; production bundle is not licensed source."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-21",
+        "url": "https://www.awwwards.com/websites/sites_of_the_day/",
+        "scope": "Public HTML retrieved; not source project export"
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Check exact publisher/item/dependencies/media; catalog listing is not permission",
+      "material_formats": [
+        "HTML metadata",
+        "selected item export format unverified"
+      ],
+      "access_requirements": "Public selected route only; premium/member variants and third-party assets require their own rights/access review",
+      "cli_capabilities": [
+        "inspect (metadata only; no general source extraction)"
+      ]
+    }
+  ],
+  "capability_fields": {
+    "routes": "Documented entry points, not connected tools",
+    "material_formats": "Expected or explicitly unverified format; inspect the selected item",
+    "access_requirements": "Public route or existing authorized access; no login, service installation or payment is performed",
+    "last_verified": "Dated observation with limited scope; not a continuing availability guarantee"
+  }
+}

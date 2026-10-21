@@ -6,7 +6,7 @@ Agent skills for website content, interface design, and 3D visuals. The workflow
 | --- | --- |
 | [nomoreslop](skills/nomoreslop/SKILL.md) | Coordinate the specialists around one shared brief |
 | [nomoreslop-writing](skills/nomoreslop-writing/SKILL.md) | Page content, product voice, actions, forms, and interface states |
-| [nomoreslop-design](skills/nomoreslop-design/SKILL.md) | Art direction, composition, typography, imagery, motion, and interface review |
+| [nomoreslop-design](skills/nomoreslop-design/SKILL.md) | Art direction, composition, typography, motion, and review for websites, web apps, and desktop/mobile interfaces |
 | [nomoreslop-3d](skills/nomoreslop-3d/SKILL.md) | Subjects, models, materials, animation, and scene performance |
 
 ## Install
@@ -25,7 +25,7 @@ npx skills add grodionn/nomoreslop --skill nomoreslop-design --agent codex
 
 Add `--global` to install across projects. This repository is currently private; GitHub access is required.
 
-Alternatively, clone the repository and use Python 3.9+ without third-party packages:
+Alternatively, clone the repository and use Python 3.10+ without third-party packages:
 
 ```sh
 git clone https://github.com/grodionn/nomoreslop.git
@@ -47,6 +47,8 @@ Write the interface copy in English.
 ```
 
 Use `$nomoreslop-writing`, `$nomoreslop-design`, or `$nomoreslop-3d` directly for a focused task. Include existing materials, constraints, and decisions you want to delegate. The coordinator shares the brief between specialists and brings in 3D when the task calls for it.
+
+The design skill includes revision 17: resource research and selection, project-state tracking, platform workflows, and targeted regression checks.
 
 ## Language and scope
 

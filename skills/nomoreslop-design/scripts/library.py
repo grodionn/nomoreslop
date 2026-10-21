@@ -19,22 +19,41 @@ from urllib.parse import unquote, urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 REFERENCES = ROOT / "references"
 CORE_CHAR_BUDGET = 20_000
+PAGE_CHAR_LIMIT = 6_000
+MAX_PAGE_CHAR_LIMIT = 8_000
 START_IDS = (
     "TXT-01", "TXT-03", "TXT-04", "TXT-08", "TXT-11", "TXT-37",
+    "TXT-35", "TXT-36", "TXT-41", "TXT-42",
     "LAY-11", "LAY-17", "LAY-18", "LAY-19", "TYP-02", "TYP-09", "TYP-14",
-    "CTL-13", "CTL-14", "CTL-15", "CTL-16",
-    "IMG-09", "MOT-13", "MOT-14", "PRC-10", "PRC-11", "PRC-12", "PRC-15", "PRC-16",
+    "CTL-13", "CTL-14", "CTL-15", "CTL-16", "CTL-17", "CTL-18", "CTL-19", "CTL-20", "PAG-13", "COL-05",
+    "IMG-09", "MOT-08", "MOT-13", "MOT-14", "MOT-15", "PRC-10", "PRC-11", "PRC-12", "PRC-15", "PRC-16",
 )
 START_STAGES = {
     "content": (
         "TXT-01", "TXT-03", "TXT-04", "TXT-08", "TXT-11", "TXT-37",
+        "TXT-35", "TXT-36", "TXT-41", "TXT-42",
         "LAY-18", "PRC-12", "PRC-16",
     ),
     "composition": (
         "LAY-11", "LAY-17", "LAY-19", "TYP-02", "TYP-09", "TYP-14",
-        "IMG-09", "PRC-10", "PRC-15",
+        "IMG-09", "PRC-10", "PRC-15", "TXT-41",
     ),
-    "detail": ("CTL-13", "CTL-14", "CTL-15", "CTL-16", "MOT-13", "MOT-14", "PRC-11"),
+    "detail": ("CTL-13", "CTL-14", "CTL-15", "CTL-16", "CTL-17", "CTL-18", "CTL-19", "CTL-20", "PAG-13", "TYP-14", "COL-05", "MOT-08", "MOT-13", "MOT-14", "MOT-15", "PRC-11"),
+}
+START_RESOURCES = {
+    "content": ("content-workflow.md", "brief-and-decisions.md"),
+    "composition": ("ready-solutions.md", "resource-selection.md", "art-direction.md", "resource-pipeline.md"),
+    "detail": ("review.md", "regression-workflow.md"),
+}
+START_RESULTS = {
+    "content": "Результат: точные тексты, материал и действия в content.md; существенные ответы/делегирование/неизвестное в design-state.md. Прочитай тексты без оформления до разметки.",
+    "composition": "Результат: профиль тегов проекта, реальные тематические запросы и изученные альтернативы с обоснованным отбором; три схемы с рекомендацией; один черновик с настоящим содержанием и выводами широкого/узкого просмотра. Порученный выбор сделай сам.",
+    "detail": "Результат: проработанные участки и полный нужный цикл управления; фактический текст сопоставлен с содержанием; функция, визуальный вид и свойства источников проверены отдельно на текущей версии. Непроверенное обозначено.",
+}
+START_TRANSITIONS = {
+    "content": "До разметки: выясни или получи явное делегирование неизвестных решений дизайн-кода, предложи проектные варианты с рекомендацией и отдельно подготовь содержание. Вопросы выбирай по references/design-interview.md: перечень запрошенных фич не закрывает их существенный сценарий, контакт не заменяет дизайн-бриф. Scroll/parallax без основания в запросе, пользовательском референсе или принятом решении не добавляй в опрос; заданное и делегированное учитывай. Ресерч можно вести параллельно; молчание не закрывает бриф. Сохраняй основание ответа/делегирования; proposed не равно approved. Продолжай короткие обсуждения оставшихся значимых развилок, не завершая бриф контактным вопросом. Факты спрашивай прямо, варианты придумывай для решений.",
+    "composition": "До макета: выполни глубокий подбор по references/resource-selection.md. Выведи недостающие теги из общего направления, композиции, материала и UX, преобразуй их в реальные запросы внутри тематических каталогов/API/MCP либо целевой программный поиск. Главная, popular/featured и первые знакомые элементы не завершают подбор. Изучи детали и содержательно разные альтернативы для одной задачи; сопоставь стиль, компоновку, UX, материал и выполнимость до принятия, даже если первый кандидат работает. Ранее использованный компонент заново проходит этот отбор. Сохрани фактические запросы, наблюдения и основание остановки; план и receipt не заменяют выбор. Для существенных участков повторяй ресурсную контрольную точку: подбор → адаптация → проверка свойства. Пригодную основу можно использовать повторно; искусственной квоты загрузок нет. Покажи три схемы с рекомендацией; для средств используй references/style-directions.md и references/technique-selection.md. Делегирование не отменяет ресерч, локальная правка не требует нового направления.",
+    "detail": "До детализации: проверь бриф, фактические источники и решения по коду, предложенные схемы и выбранный просмотренный макет в design-state.md. Если подготовка лишь запланирована, вернись к незавершённому шагу. Прочитай references/review.md: проверь настоящий масштаб, цветовые роли, обещанный результат и полный цикл нужных взаимодействий. Функция, рисунок и устойчивость проверяются отдельно. Нужные проверки известных ошибок: library.py checks ID... . Для рабочего web/desktop/mobile выбери относящиеся ветки references/platform-workflows.md; стандартная семантика управления сохраняется. Локальную правку не расширяй до нового цикла.",
 }
 GROUPS = (
     ("antipattern", "TXT", "Текст", "antipatterns/text.md"),
@@ -109,6 +128,142 @@ def load_records() -> list[Record]:
     return records
 
 
+def render_start_guidance(stage: str | None) -> str:
+    current = (ROOT / "SKILL.md").read_text(encoding="utf-8")
+    revision = re.search(r"Редакция процесса: (\d+)\.", current)
+    stamp = "Редакция процесса: " + (revision.group(1) if revision else "не указана") + ". Источник: " + str(ROOT / "SKILL.md") + "\n\n"
+    if stage is None:
+        return stamp + ("## Начало работы\n\nНовый интерфейс: start --stage content, затем composition и detail. Локальная правка: только затронутые записи через show/checks. Полный маршрут: references/staged-workflow.md. Справочник: read <файл.md>, раздел: --section <заголовок>, структура: --list-sections. Обязательные страницы дочитывай; сохранение файла не означает чтение.\n")
+    parts = ["## Переход этапа: " + stage, "", START_TRANSITIONS[stage], "", START_RESULTS[stage], "", "Прочитай относящиеся к задаче инструкции (полный текст доступен через read; длинные ответы разбиты на страницы):"]
+    for filename in START_RESOURCES[stage]:
+        parts.append("- references/" + filename + " — library.py read " + filename)
+    parts.extend(("", "Ни отметка этапа, ни автоматическая проверка не подтверждают качество. Сохраняй конкретные результаты, версию и ограничения в актуальном состоянии.", ""))
+    return stamp + "\n".join(parts)
+
+
+def paginate(text: str, limit: int = PAGE_CHAR_LIMIT) -> list[str]:
+    """Lossless chunks; reserve space for explicit page/continuation metadata."""
+    if not 1_600 <= limit <= MAX_PAGE_CHAR_LIMIT:
+        raise ValueError(f"Page limit must be between 1600 and {MAX_PAGE_CHAR_LIMIT}")
+    payload_limit = limit - 600
+    pages = []
+    rest = text
+    while len(rest) > payload_limit:
+        boundary = rest.rfind("\n\n", 0, payload_limit)
+        if boundary < payload_limit // 2:
+            boundary = rest.rfind("\n", 0, payload_limit)
+        if boundary < payload_limit // 2:
+            boundary = payload_limit
+        elif rest[boundary:boundary + 2] == "\n\n":
+            boundary += 2
+        else:
+            boundary += 1
+        pages.append(rest[:boundary])
+        rest = rest[boundary:]
+    pages.append(rest)
+    return pages
+
+
+def render_page(text: str, page: int, limit: int, command: str) -> str:
+    pages = paginate(text, limit)
+    if not 1 <= page <= len(pages):
+        raise ValueError(f"Page must be between 1 and {len(pages)}")
+    header = f"[Страница {page}/{len(pages)}; предел ответа {limit} символов]\n\n"
+    if page < len(pages) and len(command) > 330:
+        footer = f"\n[Есть продолжение. Повтори исходный вызов с тем же выбором, заменив/добавив --page {page + 1} --limit {limit}; длинный выбор здесь не повторяется.]\n"
+    elif page < len(pages):
+        footer = f"\n[Есть продолжение. Дочитай: python <путь-к-скиллу>/scripts/library.py {command} --page {page + 1} --limit {limit}]\n"
+    else:
+        footer = "\n[Конец выбранного материала; это не отметка о выполнении этапа.]\n"
+    result = header + pages[page - 1] + footer
+    if len(result) > limit:
+        raise ValueError("Page metadata exceeded reserved space; use a shorter selector")
+    return result
+
+
+def read_reference(filename: str, section: str | None = None, list_sections: bool = False) -> str:
+    source = (REFERENCES / filename).resolve()
+    if not source.is_relative_to(REFERENCES.resolve()) or source.suffix != ".md" or not source.is_file():
+        raise ValueError("Read expects an existing .md file inside references/")
+    content = source.read_text(encoding="utf-8")
+    headings = list(re.finditer(r"^(#{1,6}) (.+)$", content, re.M))
+    if list_sections:
+        return "\n".join("  " * (len(h.group(1)) - 1) + h.group(2) for h in headings) + "\n"
+    if section is None:
+        return content
+    exact = [h for h in headings if h.group(2).casefold() == section.casefold()]
+    matches = exact or [h for h in headings if section.casefold() in h.group(2).casefold()]
+    if len(matches) != 1:
+        raise ValueError("Section must select one heading; use --list-sections")
+    heading = matches[0]
+    following = [h for h in headings if h.start() > heading.start() and len(h.group(1)) <= len(heading.group(1))]
+    end = following[0].start() if following else len(content)
+    return content[heading.start():end]
+
+
+def validate_pattern_checks(data, records: list[Record]) -> list[str]:
+    errors = []
+    if not isinstance(data, dict) or data.get("schema_version") != 1 or not isinstance(data.get("patterns"), list):
+        return ["pattern-checks.json needs schema_version:1 and patterns array"]
+    expected = {record.identifier for record in records if record.kind == "antipattern"}
+    seen = set()
+    for item in data["patterns"]:
+        if not isinstance(item, dict):
+            errors.append("Pattern check must be an object"); continue
+        identity = item.get("id")
+        if not isinstance(identity, str) or identity not in expected or identity in seen:
+            errors.append(f"Unknown or duplicate pattern check: {identity}"); continue
+        seen.add(identity)
+        canonical = item.get("canonical", {})
+        if not isinstance(canonical, dict) or not isinstance(canonical.get("path"), str):
+            errors.append(f"Missing canonical path: {identity}")
+        else:
+            target = (REFERENCES / canonical["path"]).resolve()
+            record = next(record for record in records if record.identifier == identity)
+            if not target.is_relative_to(REFERENCES.resolve()) or target != record.source.resolve():
+                errors.append(f"Canonical path mismatch: {identity}")
+        check = item.get("check", {})
+        if not isinstance(check, dict) or any(not isinstance(check.get(key), str) or not check[key].strip() for key in ("action", "expected", "counterexample")):
+            errors.append(f"Incomplete action/expected/counterexample: {identity}")
+        grounds = item.get("grounding", [])
+        if not isinstance(grounds, list) or not grounds:
+            errors.append(f"Missing grounding: {identity}"); continue
+        for ground in grounds:
+            if not isinstance(ground, dict) or ground.get("type") not in {"user_policy", "professional", "criterion", "evidence"}:
+                errors.append(f"Unknown grounding type: {identity}"); continue
+            if any(not isinstance(ground.get(key), str) or not ground[key].strip() for key in ("context", "limits")):
+                errors.append(f"Grounding needs scope and limits: {identity}")
+            if ground["type"] != "user_policy" and not str(ground.get("url", "")).startswith("https://"):
+                errors.append(f"Grounding needs primary URL: {identity}")
+    for identity in sorted(expected - seen):
+        errors.append(f"Missing pattern check: {identity}")
+    return errors
+
+
+def read_pattern_checks(records: list[Record]):
+    data = json.loads((REFERENCES / "pattern-checks.json").read_text(encoding="utf-8"))
+    errors = validate_pattern_checks(data, records)
+    if errors:
+        raise ValueError("; ".join(errors))
+    return {item["id"]: item for item in data["patterns"]}
+
+
+def render_pattern_checks(identifiers, recipes) -> str:
+    parts = ["# Проверки выбранных признаков", "", "Проверь текущий артефакт и границу; это задания для проверки, не выполненные тесты и не детектор авторства.", ""]
+    for identity in identifiers:
+        if identity not in recipes:
+            raise ValueError(f"No antipattern check for {identity}")
+        recipe = recipes[identity]
+        parts.extend((f"## {identity}", "Каноническое правило: references/" + recipe["canonical"]["path"],
+                      "Действие проверки: " + recipe["check"]["action"],
+                      "Ожидаемое: " + recipe["check"]["expected"],
+                      "Контрольное исключение: " + recipe["check"]["counterexample"]))
+        for ground in recipe["grounding"]:
+            parts.append("Основание (" + ground["type"] + "): " + ground["context"] + " " + ground.get("url", "") + " Граница: " + ground["limits"])
+        parts.append("")
+    return "\n".join(parts)
+
+
 def render_index(records: list[Record], kind: str) -> str:
     if kind == "antipattern":
         lines = [
@@ -178,6 +333,29 @@ def validate(records: list[Record]) -> list[str]:
             errors.append(f"Unknown record reference: {source.name}: {identifier}")
         if "[TODO:" in text or "\ufffd" in text:
             errors.append(f"Unfinished scaffold or replacement character: {source.name}")
+    lookup = {record.identifier: record for record in records}
+    for stage, stage_ids in START_STAGES.items():
+        payload = render_start_guidance(stage) + "\n" + "\n".join(lookup[key].render() for key in stage_ids)
+        pages = paginate(payload)
+        if "".join(pages) != payload:
+            errors.append(f"Lossy stage pagination: {stage}")
+        for page_number in range(1, len(pages) + 1):
+            if len(render_page(payload, page_number, PAGE_CHAR_LIMIT, f"start --stage {stage}")) > PAGE_CHAR_LIMIT:
+                errors.append(f"Stage page exceeds limit: {stage}/{page_number}")
+    try:
+        data = json.loads((REFERENCES / "pattern-checks.json").read_text(encoding="utf-8"))
+        errors.extend(validate_pattern_checks(data, records))
+    except (OSError, ValueError) as error:
+        errors.append("Pattern checks: " + str(error))
+    try:
+        adapters = json.loads((REFERENCES / "source-adapters.json").read_text(encoding="utf-8"))
+        sources = adapters.get("sources", [])
+        identities = [row.get("id") for row in sources]
+        urls = [row.get("saved_url") for row in sources]
+        if adapters.get("schema_version") != 1 or len(sources) != 36 or len(set(identities)) != 36 or not all(isinstance(url, str) and url.startswith("https://") for url in urls):
+            errors.append("Source adapter map must retain 35 bookmark entries + Awwwards with unique IDs")
+    except (OSError, ValueError, TypeError, AttributeError) as error:
+        errors.append("Source adapters: " + str(error))
     skill_path = ROOT / "SKILL.md"
     core = skill_path.read_text(encoding="utf-8")
     if not re.match(r"\A---\nname: nomoreslop-design\ndescription: .+\n---\n", core):
@@ -227,8 +405,8 @@ def show_stats(records: list[Record], encoding_name: str | None) -> None:
 
     packets = {
         "core": core,
-        "new_ui_start": core + selected(*START_IDS),
-        "new_ui_brief": core + selected(*START_IDS)
+        "all_baseline_records_example": core + render_start_guidance(None) + selected(*START_IDS),
+        "all_baseline_with_brief_example": core + selected(*START_IDS)
         + (REFERENCES / "brief-and-decisions.md").read_text(encoding="utf-8"),
         "art_direction_example": core + selected(*START_IDS)
         + (REFERENCES / "art-direction.md").read_text(encoding="utf-8")
@@ -252,8 +430,11 @@ def show_stats(records: list[Record], encoding_name: str | None) -> None:
     }
     entry = (ROOT / "SKILL.md").read_text(encoding="utf-8")
     workflow = (REFERENCES / "staged-workflow.md").read_text(encoding="utf-8")
+    packets["start_route"] = render_page(render_start_guidance(None) + "\n", 1, PAGE_CHAR_LIMIT, "start")
     for stage, identifiers in START_STAGES.items():
-        packets[f"{stage}_stage"] = entry + workflow + selected(*identifiers)
+        full_packet = render_start_guidance(stage) + "\n" + selected(*identifiers)
+        packets[f"{stage}_start_full"] = full_packet
+        packets[f"{stage}_start_page1"] = render_page(full_packet, 1, PAGE_CHAR_LIMIT, f"start --stage {stage}")
     all_markdown = "\n".join(
         source.read_text(encoding="utf-8") for source in sorted(ROOT.rglob("*.md"))
     )
@@ -262,6 +443,7 @@ def show_stats(records: list[Record], encoding_name: str | None) -> None:
         "techniques": sum(r.kind == "technique" for r in records),
         "encoding": encoding_name,
         "note": tokenizer_note,
+        "packet_note": "*_start_full is the exact selected start payload before pagination; *_start_page1 and start_route are emitted CLI pages. Other *_example packets are constructed context examples, not mandatory output.",
         "core_character_budget": CORE_CHAR_BUDGET,
         "packets": {name: measure(text, encoding) for name, text in packets.items()},
         "all_markdown": measure(all_markdown, encoding),
@@ -273,9 +455,19 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
     start = commands.add_parser("start", help="Print baseline records, optionally limited to the current stage")
-    start.add_argument("--stage", choices=tuple(START_STAGES), help="Load only the current stage; omit for the full baseline")
+    start.add_argument("--stage", choices=tuple(START_STAGES), help="Load the current stage; omit to show the route")
+    start.add_argument("--platform", choices=("web", "web-app", "desktop", "mobile"), help="Add a conditional platform route, not the whole platform guide")
     show = commands.add_parser("show", help="Print only the requested complete records")
     show.add_argument("identifiers", nargs="+")
+    checks = commands.add_parser("checks", help="Print specific checks, positive counterexamples and grounding for selected antipattern IDs")
+    checks.add_argument("identifiers", nargs="+")
+    read = commands.add_parser("read", help="Read a reference file or one heading, with explicit continuation")
+    read.add_argument("filename")
+    read.add_argument("--section")
+    read.add_argument("--list-sections", action="store_true")
+    for paged_parser in (start, show, read, checks):
+        paged_parser.add_argument("--page", type=int, default=1)
+        paged_parser.add_argument("--limit", type=int, default=PAGE_CHAR_LIMIT, help="Maximum output characters, including page metadata (1600–8000)")
     index = commands.add_parser("index", help="Print one compact index")
     index.add_argument("kind", choices=("antipattern", "technique"))
     commands.add_parser("build-index", help="Regenerate the two Markdown indexes")
@@ -288,16 +480,35 @@ def main() -> int:
         if args.command in ("start", "show"):
             lookup = {record.identifier: record for record in records}
             requested = (
-                list(START_STAGES[args.stage] if args.stage else START_IDS) if args.command == "start"
-                else list(dict.fromkeys(item.upper() for item in args.identifiers))
+                list(START_STAGES[args.stage]) if args.command == "start" and args.stage else
+                [] if args.command == "start" else
+                list(dict.fromkeys(item.upper() for item in args.identifiers))
             )
             missing = [identifier for identifier in requested if identifier not in lookup]
             if missing:
                 raise ValueError("Unknown identifiers: " + ", ".join(missing))
-            for number, identifier in enumerate(requested):
-                if number:
-                    print()
-                print(lookup[identifier].render(), end="")
+            payload = "\n".join(lookup[key].render() for key in requested)
+            if args.command == "start":
+                payload = render_start_guidance(args.stage) + "\n" + payload
+                command = "start" + (f" --stage {args.stage}" if args.stage else "")
+                if args.platform:
+                    payload += "\nПлатформа: " + args.platform + ". Прочитай относящиеся сценарии references/platform-workflows.md; не загружай все ветки, не переписывай знакомое управление ради необычности.\n"
+                    command += " --platform " + args.platform
+            else:
+                command = "show " + " ".join(requested)
+            print(render_page(payload, args.page, args.limit, command), end="")
+        elif args.command == "checks":
+            requested = list(dict.fromkeys(item.upper() for item in args.identifiers))
+            payload = render_pattern_checks(requested, read_pattern_checks(records))
+            print(render_page(payload, args.page, args.limit, "checks " + " ".join(requested)), end="")
+        elif args.command == "read":
+            payload = read_reference(args.filename, args.section, args.list_sections)
+            command = 'read "' + args.filename + '"'
+            if args.section:
+                command += ' --section "' + args.section + '"'
+            if args.list_sections:
+                command += " --list-sections"
+            print(render_page(payload, args.page, args.limit, command), end="")
         elif args.command == "index":
             print(render_index(records, args.kind), end="")
         elif args.command == "build-index":

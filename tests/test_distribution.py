@@ -15,6 +15,8 @@ class DistributionTests(unittest.TestCase):
             "README.md", "LICENSE", ".gitignore", ".gitattributes", ".editorconfig",
             ".github/workflows/checks.yml", "skills/nomoreslop-design/SKILL.md",
             "skills/nomoreslop-design/scripts/library.py", "docs/TESTING.md",
+            "skills/nomoreslop-design/references/pattern-checks.json",
+            "skills/nomoreslop-design/references/source-adapters.json",
         ]
         self.assertEqual(checker.check_distribution_paths(paths), [])
 
@@ -22,7 +24,7 @@ class DistributionTests(unittest.TestCase):
         self.assertTrue(checker.check_distribution_paths([".local/private-notes.md"]))
 
     def test_attachments_and_archives_are_rejected(self):
-        for name in ["screen.png", "assets/font.woff", "history.bundle", "files.zip"]:
+        for name in ["screen.png", "assets/font.woff", "history.bundle", "files.zip", "unreviewed.json"]:
             with self.subTest(name=name):
                 self.assertTrue(checker.check_distribution_paths([name]))
 

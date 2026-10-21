@@ -48,17 +48,28 @@ def cli(*args, root=SKILL, cwd=REPO):
 
 
 class LibraryTests(unittest.TestCase):
+    def read_all_pages(self, *args):
+        pages = []
+        for number in range(1, 101):
+            result = cli(*args, "--page", str(number))
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertLessEqual(len(result.stdout), library.PAGE_CHAR_LIMIT)
+            header, body = result.stdout.split("\n\n", 1)
+            total = int(re.search(r"\d+/(\d+);", header).group(1))
+            pages.append(body.rsplit("\n[", 1)[0])
+            if number == total:
+                return "".join(pages)
+        self.fail("CLI pagination did not terminate")
+
     def test_distributed_package_is_valid(self):
         self.assertEqual(library.validate(library.load_records()), [])
 
-    def test_start_contains_complete_selected_records_only(self):
+    def test_start_shows_route_without_loading_records(self):
         result = cli("start")
         self.assertEqual(result.returncode, 0, result.stderr)
         actual = library.HEADING.findall(result.stdout)
-        self.assertEqual([heading[0] for heading in actual], list(library.START_IDS))
-        for record in library.load_records():
-            if record.identifier in library.START_IDS:
-                self.assertIn(record.body, result.stdout)
+        self.assertEqual(actual, [])
+        self.assertIn(library.render_start_guidance(None), result.stdout)
 
     def test_show_preserves_order_deduplicates_and_accepts_lowercase(self):
         result = cli("show", "mat-01", "TXT-03", "MAT-01")
@@ -69,16 +80,13 @@ class LibraryTests(unittest.TestCase):
         all_ids = []
         for stage, identifiers in library.START_STAGES.items():
             with self.subTest(stage=stage):
-                result = cli("start", "--stage", stage)
-                self.assertEqual(result.returncode, 0, result.stderr)
-                self.assertEqual([h[0] for h in library.HEADING.findall(result.stdout)], list(identifiers))
-                self.assertLess(len(result.stdout), len(cli("start").stdout))
+                material = self.read_all_pages("start", "--stage", stage)
+                self.assertEqual([h[0] for h in library.HEADING.findall(material)], list(identifiers))
                 for record in library.load_records():
                     if record.identifier in identifiers:
-                        self.assertIn(record.body, result.stdout)
+                        self.assertIn(record.body, material)
                 all_ids.extend(identifiers)
-        self.assertCountEqual(all_ids, library.START_IDS)
-        self.assertEqual(len(all_ids), len(set(all_ids)))
+        self.assertEqual(set(all_ids), set(library.START_IDS))
 
     def test_unknown_stage_fails_without_partial_output(self):
         result = cli("start", "--stage", "unknown")
@@ -116,7 +124,7 @@ class LibraryTests(unittest.TestCase):
         self.assertEqual(stats["techniques"], sum(r.kind == "technique" for r in records))
         self.assertIsNone(stats["encoding"])
         self.assertNotIn("tokens", stats["packets"]["core"])
-        self.assertGreater(stats["packets"]["new_ui_start"]["characters"], stats["packets"]["core"]["characters"])
+        self.assertGreater(stats["packets"]["all_baseline_records_example"]["characters"], stats["packets"]["core"]["characters"])
 
     def test_stale_index_is_rejected_and_regeneration_is_idempotent(self):
         with isolated_package() as root:

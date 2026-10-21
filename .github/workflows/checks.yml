@@ -20,7 +20,7 @@ jobs:
       matrix:
         include:
           - os: ubuntu-24.04
-            python: '3.9'
+            python: '3.10'
           - os: ubuntu-24.04
             python: '3.13'
           - os: windows-latest
@@ -40,5 +40,7 @@ jobs:
         run: python skills/nomoreslop-design/scripts/library.py check
       - name: Exercise CLI, portability and failure cases
         run: python -m unittest discover -s tests -p "test_*.py" -v
+      - name: Exercise design resource, state and regression tools
+        run: python -m unittest discover -s skills/nomoreslop-design/tests -p "test_*.py" -v
       - name: Check documentation links
         run: python scripts/check_repo.py

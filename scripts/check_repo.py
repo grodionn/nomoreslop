@@ -13,6 +13,10 @@ EXCLUDED = {".git", ".local", ".venv", "node_modules", "__pycache__", "test-resu
 LINK = re.compile(r"!?\[[^\]\n]*\]\((<[^>]+>|[^)\s]+)(?:\s+\"[^\"]*\")?\)")
 TEXT_SUFFIXES = {".md", ".py", ".yml", ".yaml"}
 ROOT_FILES = {".editorconfig", ".gitattributes", ".gitignore", "LICENSE"}
+SKILL_DATA_FILES = {
+    "skills/nomoreslop-design/references/pattern-checks.json",
+    "skills/nomoreslop-design/references/source-adapters.json",
+}
 PRIVATE_PREFIXES = (".local/", "node_modules/", "evals/", "examples/", "docs/assets/")
 
 
@@ -22,7 +26,7 @@ def check_distribution_paths(paths):
         path = Path(name)
         if name.startswith(PRIVATE_PREFIXES):
             errors.append(f"Internal or unreviewed material is tracked: {name}")
-        elif name not in ROOT_FILES and path.suffix not in TEXT_SUFFIXES:
+        elif name not in ROOT_FILES | SKILL_DATA_FILES and path.suffix not in TEXT_SUFFIXES:
             errors.append(f"File outside the text-only package: {name}")
     return errors
 

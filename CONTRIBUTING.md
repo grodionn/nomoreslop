@@ -4,12 +4,13 @@ Start with a reproducible problem and the expected behavior. Keep the change sco
 
 Keep shared decisions in `SKILL.md` and detailed guidance in the relevant reference library. When updating an existing rule, clarifying when it applies is usually enough. Write contributor documentation in English; preserve language-specific examples and rules in the skill library.
 
-After changing the library, regenerate the indexes and run all checks from the repository root with Python 3.9+:
+After changing the library, regenerate the indexes and run all checks from the repository root with Python 3.10+:
 
 ```sh
 python skills/nomoreslop-design/scripts/library.py build-index
 python skills/nomoreslop-design/scripts/library.py check
 python -m unittest discover -s tests -p "test_*.py" -v
+python -m unittest discover -s skills/nomoreslop-design/tests -p "test_*.py" -v
 python scripts/check_repo.py
 ```
 
