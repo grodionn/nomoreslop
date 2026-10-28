@@ -7,7 +7,7 @@ import shutil
 import sys
 
 
-SKILLS = ("nomoreslop-design", "nomoreslop-writing", "nomoreslop-3d", "nomoreslop")
+SKILLS = ("nomoreslop-design", "nomoreslop-writing", "nomoreslop-3d", "nomoreslop", "nomoreslop-typography", "nomoreslop-color")
 SOURCE = Path(__file__).resolve().parents[1] / "skills"
 
 

@@ -17,6 +17,7 @@ class DistributionTests(unittest.TestCase):
             "skills/nomoreslop-design/scripts/library.py", "docs/TESTING.md",
             "skills/nomoreslop-design/references/pattern-checks.json",
             "skills/nomoreslop-design/references/source-adapters.json",
+            "skills/nomoreslop-typography/references/font-sources.json",
         ]
         self.assertEqual(checker.check_distribution_paths(paths), [])
 
