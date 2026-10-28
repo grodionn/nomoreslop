@@ -12,6 +12,8 @@ python skills/nomoreslop-design/scripts/library.py check
 python -m unittest discover -s tests -p "test_*.py" -v
 python -m unittest discover -s skills/nomoreslop-design/tests -p "test_*.py" -v
 python scripts/check_repo.py
+python -m unittest discover -s skills/nomoreslop-typography/tests -p "test_*.py" -v
+python -m unittest discover -s skills/nomoreslop-color/tests -p "test_*.py" -v
 ```
 
 If skill behavior changes, repeat the affected scenario in a fresh context. Report the actual result and remaining limitations. Package checks do not assess visual quality.

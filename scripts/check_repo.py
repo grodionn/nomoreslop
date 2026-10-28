@@ -16,6 +16,7 @@ ROOT_FILES = {".editorconfig", ".gitattributes", ".gitignore", "LICENSE"}
 SKILL_DATA_FILES = {
     "skills/nomoreslop-design/references/pattern-checks.json",
     "skills/nomoreslop-design/references/source-adapters.json",
+    "skills/nomoreslop-typography/references/font-sources.json",
 }
 PRIVATE_PREFIXES = (".local/", "node_modules/", "evals/", "examples/", "docs/assets/")
 

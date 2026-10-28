@@ -137,6 +137,10 @@ def render_start_guidance(stage: str | None) -> str:
     parts = ["## Переход этапа: " + stage, "", START_TRANSITIONS[stage], "", START_RESULTS[stage], "", "Прочитай относящиеся к задаче инструкции (полный текст доступен через read; длинные ответы разбиты на страницы):"]
     for filename in START_RESOURCES[stage]:
         parts.append("- references/" + filename + " — library.py read " + filename)
+    if stage == "composition":
+        parts.append("- При новой текстовой системе и проблемах чтения/интервалов: references/font-research.md → nomoreslop-typography по фактическому каталогу навыков. Передай строки, locale/script, роль и контекст. Прими шкалу/ритм/адаптацию и проверки; новому шрифту — сравнение, лицензию, файлы и cmap/shaping/render. Design проверяет целую композицию. Локальная правка не требует смены семьи и второго брифа.")
+    if stage == "composition":
+        parts.append("- Для нового цветового направления и проблем палитры: references/color-research.md → nomoreslop-color по доступному каталогу. Прими исследованные источники, роли и пару light/dark каждого предложения; design проверяет интенсивность, площади и целую композицию. Не повторяй общий бриф и не меняй принятую систему ради ресерча.")
     parts.extend(("", "Ни отметка этапа, ни автоматическая проверка не подтверждают качество. Сохраняй конкретные результаты, версию и ограничения в актуальном состоянии.", ""))
     return stamp + "\n".join(parts)
 
@@ -352,8 +356,8 @@ def validate(records: list[Record]) -> list[str]:
         sources = adapters.get("sources", [])
         identities = [row.get("id") for row in sources]
         urls = [row.get("saved_url") for row in sources]
-        if adapters.get("schema_version") != 1 or len(sources) != 36 or len(set(identities)) != 36 or not all(isinstance(url, str) and url.startswith("https://") for url in urls):
-            errors.append("Source adapter map must retain 35 bookmark entries + Awwwards with unique IDs")
+        if adapters.get("schema_version") != 1 or len(sources) != 37 or len(set(identities)) != 37 or not all(isinstance(url, str) and url.startswith("https://") for url in urls):
+            errors.append("Source adapter map must retain 35 bookmark entries + Awwwards + Colorsinspo with unique IDs")
     except (OSError, ValueError, TypeError, AttributeError) as error:
         errors.append("Source adapters: " + str(error))
     skill_path = ROOT / "SKILL.md"

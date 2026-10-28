@@ -44,3 +44,7 @@ jobs:
         run: python -m unittest discover -s skills/nomoreslop-design/tests -p "test_*.py" -v
       - name: Check documentation links
         run: python scripts/check_repo.py
+      - name: Exercise typography catalog and font checks
+        run: python -m unittest discover -s skills/nomoreslop-typography/tests -p "test_*.py" -v
+      - name: Exercise color extraction and contrast checks
+        run: python -m unittest discover -s skills/nomoreslop-color/tests -p "test_*.py" -v
