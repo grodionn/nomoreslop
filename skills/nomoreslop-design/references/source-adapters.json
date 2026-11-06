@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_on": "2026-10-27",
+  "updated_on": "2026-10-29",
   "description": "37 entry points: 35 saved bookmarks + Awwwards + Colorsinspo. Capability and route map, not a universal scraper, connected MCP declaration, or license grant.",
   "transports": {
     "implemented": [
@@ -11,10 +11,11 @@
     "external_available_only_after_current_schema_review": [
       "authorized MCP",
       "official documented API/CLI",
-      "official author repository export"
+      "official author repository export",
+      "Codex in-app Browser MCP for site search, rendered references, demos and own-implementation comparison; no official site MCP required"
     ],
     "never": [
-      "computer use or headless for external reference search",
+      "external Chrome/Edge, desktop automation or separately launched headless/Playwright/Puppeteer for browser research or QA; documented in-app browser locators are allowed",
       "credential or payment/quota bypass",
       "automatic package installation or code execution"
     ]
@@ -1522,7 +1523,7 @@
         "HEX palette values",
         "gradient CSS"
       ],
-      "access_requirements": "Public permitted HTML only; no /api/ or blocked query routes, no browser/headless, no authorization or quota bypass.",
+      "access_requirements": "Public permitted HTML only; no /api/ or blocked query routes, no authorization or quota bypass. Separate ordinary site search/visual inspection is allowed only in Codex in-app Browser MCP; external browsers/headless are forbidden.",
       "cli_capabilities": [
         "inspect (metadata only; palette extraction is in nomoreslop-color)"
       ]

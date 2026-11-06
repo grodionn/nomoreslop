@@ -2,7 +2,7 @@
   "schema_version": 1,
   "checked_at": "2026-10-24",
   "scope": "Primary-source route and license-policy research; not a live availability guarantee or a per-font license/coverage approval. scripts and roles are discovery directions, never claims about every file.",
-  "transport_policy": "External discovery through documented API, HTTP, official repository or programmatic search only; no computer use/browser/headless.",
+  "transport_policy": "Use documented API, HTTP, official files/repositories or programmatic search; an official site MCP is not required. Browser search, specimens and rendered QA may use only Codex in-app Browser MCP. No external Chrome/Edge, desktop control or separately launched headless. Shortlist with compact data; preserve readable comparisons and actual source/license/render evidence.",
   "sources": [
     {
       "id": "google-fonts",
