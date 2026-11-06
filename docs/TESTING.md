@@ -21,6 +21,8 @@ Behavior scenarios require separate runs. Give the agent the prompt and prepared
 - [Coordinator](../skills/nomoreslop/checks/scenarios.md): new sites, redesigns, meaningful visual questions, partial answers, delegated decisions, and sufficient existing briefs. Routing a small button edit does not cover these cases.
 - [Typography](../skills/nomoreslop-typography/checks/scenarios.md): reading, spacing, identity, source selection, languages, zoom, and evidence boundaries.
 - [Color](../skills/nomoreslop-color/checks/scenarios.md): source depth, scientific context, intensity, paired themes, gradients, and scope.
+- [UX](../skills/nomoreslop-ux/checks/scenarios.md): information structure, task-based layout, controls, preservation of input and context, partial results, and evidence boundaries across different interface families.
+- [Motion](../skills/nomoreslop-motion/checks/scenarios.md): motion roles, scroll behavior, interruption, lifecycle, reduced motion, and measured execution.
 - [3D](../skills/nomoreslop-3d/checks/scenarios.md): subject selection, visible detail, abstraction, palette, measured load, and continuous presentation. Execution and performance require a real render and measured interaction; a good plan establishes only the decisions made. A narrow viewport does not prove smooth performance on a physical phone.
 
 Assess copy and design against the actual artifact and task. Tool checks cannot replace that assessment. Individual runs do not demonstrate an advantage over an agent without the skills. Store run transcripts and raw logs in `.local/`; they are excluded from distribution.

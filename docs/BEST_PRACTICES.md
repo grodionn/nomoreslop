@@ -6,6 +6,10 @@ Explain which decisions you want to discuss and which you delegate. A small edit
 
 Start with content: facts, materials, actions, and the actual words visitors need. Review a composition draft with that content before adding imagery and detail. For a new site, the design skill records content and workflow state in the project's working directory and restores decisions when continuing. Check the result on the required devices and complete the main user action.
 
+Use [nomoreslop-ux](../skills/nomoreslop-ux/SKILL.md) before fixing a new information structure or user flow. Establish what people need to read, compare, choose, change, and preserve; a publication, gallery, form, and working registry need different arrangements. UX shares the existing brief and state with design. A focused audit returns findings and a reviewable plan; an implementation request continues through changes and relevant checks.
+
+Use [nomoreslop-motion](../skills/nomoreslop-motion/SKILL.md) when the task changes interaction or scroll behavior. Check the relevant exit, reversal, interruption, repeat, and reduced-motion behavior in context. A screenshot or passing logic test does not establish smooth execution on a physical device.
+
 Read only the references needed for the current stage. Use [nomoreslop](../skills/nomoreslop/SKILL.md) to share one brief across specialists. A useful brief may take several short rounds of questions; options should describe observable differences. Do not reopen decisions that are already settled or delegated. Continue execution once the brief is sufficient.
 
 For 3D work, use [nomoreslop-3d](../skills/nomoreslop-3d/SKILL.md). Discuss the visual's role, the subject or abstraction, realism, close-up views, and mobile behavior. Assess the idea, execution, and performance separately. Detail must hold up from the required viewpoints. Materials and lighting need not repeat a single brand accent, and abstract work should retain its character.
