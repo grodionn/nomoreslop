@@ -48,11 +48,11 @@ Write the interface copy in English.
 
 Use `$nomoreslop-writing`, `$nomoreslop-design`, or `$nomoreslop-3d` directly for a focused task. Include existing materials, constraints, and decisions you want to delegate. The coordinator shares the brief between specialists and brings in 3D when the task calls for it.
 
-The design skill includes revision 17: resource research and selection, project-state tracking, platform workflows, and targeted regression checks.
+The design workflow builds a black-and-white wireframe before styling, revisits design and copy after each site change, and checks animation performance before frontend code in the final pass. The `library.py show` command returns decision criteria. Use `library.py checks` with the same IDs to review worked examples and valid counterexamples.
 
 ## Language and scope
 
-The README and contributor documentation are in English. Skill instructions, reference libraries, and behavior scenarios are currently in Russian. Specify the target language and locale in your prompt; a full English translation of the skill library is still pending.
+The README and contributor documentation are in English. Skill instructions, reference libraries, and behavior scenarios are in Russian. Specify the target language and locale in your prompt.
 
 The package contains instructions, reference material, Python tools, and tests. Automated checks validate the tools and package structure; they do not establish design quality or demonstrate an improvement over an agent without these skills.
 

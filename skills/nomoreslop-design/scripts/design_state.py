@@ -70,7 +70,7 @@ def check_state(state, root: Path, stage: str = 'detail') -> dict:
             pending.append(f'{identity}: {status}; dependent choice is unresolved.')
     if mode in {'new', 'redesign'}:
         if not brief:
-            pending.append('No brief decisions recorded; contact alone does not establish sufficiency.')
+            pending.append('No brief decisions recorded. Document the choices that shape the requested result.')
         intent = state.get('intent', {})
         if not isinstance(intent, dict):
             issues.append('intent must be an object.'); intent = {}

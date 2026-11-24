@@ -4,6 +4,8 @@ Start with a reproducible problem and the expected behavior. Keep the change sco
 
 Keep shared decisions in `SKILL.md` and detailed guidance in the relevant reference library. When updating an existing rule, clarifying when it applies is usually enough. Write contributor documentation in English; preserve language-specific examples and rules in the skill library.
 
+Describe the condition, observable failure, corrective decision and boundary of each rule. Keep the motivating example and a valid counterexample with its ID in `pattern-checks.json`, or in the skill’s `checks/` directory for a multi-step scenario. Try the decision on a different subject, locale or input method before extending its scope.
+
 After changing the library, regenerate the indexes and run all checks from the repository root with Python 3.10+:
 
 ```sh

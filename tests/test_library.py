@@ -78,6 +78,7 @@ class LibraryTests(unittest.TestCase):
 
     def test_stage_loads_complete_records_without_other_stages(self):
         all_ids = []
+        recipes = library.read_pattern_checks(library.load_records())
         for stage, identifiers in library.START_STAGES.items():
             with self.subTest(stage=stage):
                 material = self.read_all_pages("start", "--stage", stage)
@@ -85,8 +86,30 @@ class LibraryTests(unittest.TestCase):
                 for record in library.load_records():
                     if record.identifier in identifiers:
                         self.assertIn(record.body, material)
+                for recipe in recipes.values():
+                    self.assertNotIn(recipe["check"]["example"], material)
                 all_ids.extend(identifiers)
         self.assertEqual(set(all_ids), set(library.START_IDS))
+
+    def test_checks_returns_worked_cases_only_for_requested_rules(self):
+        recipes = library.read_pattern_checks(library.load_records())
+        selected = ("TYP-03", "CTL-21")
+        rules = self.read_all_pages("show", *selected)
+        checks = self.read_all_pages("checks", *selected)
+        for identity, recipe in recipes.items():
+            example = recipe["check"]["example"]
+            self.assertNotIn(example, rules)
+            self.assertEqual(example in checks, identity in selected)
+        for identity in selected:
+            self.assertIn(recipes[identity]["check"]["counterexample"], checks)
+
+    def test_example_cannot_be_added_back_to_a_working_rule(self):
+        with isolated_package() as root:
+            family = root / "references" / "antipatterns" / "text.md"
+            with family.open("a", encoding="utf-8") as stream:
+                stream.write("\nПример: one particular site\n")
+            with self.assertRaisesRegex(ValueError, "pattern-checks.json"):
+                library.load_records()
 
     def test_unknown_stage_fails_without_partial_output(self):
         result = cli("start", "--stage", "unknown")

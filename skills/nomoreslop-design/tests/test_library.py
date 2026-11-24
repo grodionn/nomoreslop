@@ -35,6 +35,15 @@ class LibraryTests(unittest.TestCase):
         recipes = deepcopy(self.recipes); removed = recipes['patterns'].pop()['id']
         self.assertTrue(any(removed in item for item in lib.validate_pattern_checks(recipes, self.records)))
 
+    def test_missing_example_and_stale_rule_anchor_are_rejected(self):
+        recipes = deepcopy(self.recipes)
+        recipe = recipes['patterns'][0]
+        del recipe['check']['example']
+        recipe['canonical']['anchor'] = 'obsolete-heading'
+        errors = lib.validate_pattern_checks(recipes, self.records)
+        self.assertTrue(any('example' in error and recipe['id'] in error for error in errors))
+        self.assertTrue(any('anchor mismatch' in error and recipe['id'] in error for error in errors))
+
     def test_duplicate_and_foreign_canonical_are_errors(self):
         recipes = deepcopy(self.recipes)
         recipes['patterns'].append(deepcopy(recipes['patterns'][0]))

@@ -2,6 +2,7 @@
 """Check local documentation links. No network, third-party dependencies or writes."""
 
 from pathlib import Path
+import os
 import re
 import subprocess
 import sys
@@ -31,6 +32,16 @@ def check_distribution_paths(paths):
     return errors
 
 
+def workspace_files(root):
+    def fail(error):
+        raise error
+
+    for directory, directories, filenames in os.walk(root, onerror=fail):
+        directories[:] = [name for name in directories if name not in EXCLUDED]
+        for name in filenames:
+            yield Path(directory) / name
+
+
 def tracked_paths(root):
     try:
         result = subprocess.run(
@@ -41,16 +52,14 @@ def tracked_paths(root):
     except (OSError, subprocess.SubprocessError):
         return [
             source.relative_to(root).as_posix()
-            for source in root.rglob("*")
-            if source.is_file() and not EXCLUDED.intersection(source.relative_to(root).parts)
+            for source in workspace_files(root)
+            if source.is_file()
         ]
 
 
 def check(root=ROOT):
     errors = check_distribution_paths(tracked_paths(root))
-    for source in sorted(root.rglob("*.md")):
-        if EXCLUDED.intersection(source.relative_to(root).parts):
-            continue
+    for source in sorted(path for path in workspace_files(root) if path.suffix == ".md"):
         content = source.read_text(encoding="utf-8")
         # Examples inside code fences describe generated files, not repository links.
         content = re.sub(r"(?ms)^(`{3,}|~{3,})[^\n]*\n.*?^\1\s*$", "", content)
