@@ -758,7 +758,7 @@ def structural_coverage(state: dict, project: Path) -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
-    sources = sub.add_parser("sources", help="Filter the 35 saved entries + Awwwards capability map (no network)")
+    sources = sub.add_parser("sources", help="Filter the saved entries + Awwwards + Colorsinspo capability map (no network)")
     sources.add_argument("--kind"); sources.add_argument("--platform"); sources.add_argument("--id")
     inspect = sub.add_parser("inspect", help="Bounded public HTTPS read; summarize registry/metadata/HTML honestly")
     inspect.add_argument("url")

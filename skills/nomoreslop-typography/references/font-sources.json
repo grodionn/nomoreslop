@@ -1,0 +1,553 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-24",
+  "scope": "Primary-source route and license-policy research; not a live availability guarantee or a per-font license/coverage approval. scripts and roles are discovery directions, never claims about every file.",
+  "transport_policy": "External discovery through documented API, HTTP, official repository or programmatic search only; no computer use/browser/headless.",
+  "sources": [
+    {
+      "id": "google-fonts",
+      "name": "Google Fonts + официальный репозиторий",
+      "url": "https://fonts.google.com/",
+      "scripts": [
+        "Latn",
+        "Cyrl",
+        "Grek",
+        "Arab",
+        "Hebr",
+        "Deva",
+        "Beng",
+        "Guru",
+        "Gujr",
+        "Orya",
+        "Taml",
+        "Telu",
+        "Knda",
+        "Mlym",
+        "Sinh",
+        "Thai",
+        "Laoo",
+        "Khmr",
+        "Mymr",
+        "Tibt",
+        "Ethi",
+        "Armn",
+        "Geor",
+        "Hani",
+        "Hira",
+        "Kana",
+        "Hang"
+      ],
+      "roles": [
+        "body",
+        "display",
+        "ui",
+        "data",
+        "fallback"
+      ],
+      "discovery": {
+        "channel": "repository",
+        "url": "https://github.com/google/fonts",
+        "notes": "Каталог языка/категории → конкретная семья; через HTTP читать существующие METADATA.pb, DESCRIPTION и OFL/LICENSE внутри каталога семьи. Перейти к upstream автора по metadata. Google Developer API использовать только при имеющемся разрешённом ключе; он не обязателен для публичного репозитория."
+      },
+      "license_evidence": [
+        "https://github.com/google/fonts"
+      ],
+      "license_scope": "Разрешения подтверждать файлом выбранной семьи; OFL/Apache и другие имеющиеся семейные лицензии не смешивать.",
+      "caveats": "Страница каталога может быть JS-shell. Language/subset metadata не доказывают покрытие конечного WOFF2. Один шрифт в Google Fonts, Fontsource и у автора — одна находка.",
+      "canonical_group": "google-fonts-distribution"
+    },
+    {
+      "id": "fontsource",
+      "name": "Fontsource",
+      "url": "https://fontsource.org/",
+      "scripts": [
+        "Latn",
+        "Cyrl",
+        "Grek",
+        "Arab",
+        "Hebr",
+        "Deva",
+        "Beng",
+        "Guru",
+        "Gujr",
+        "Orya",
+        "Taml",
+        "Telu",
+        "Knda",
+        "Mlym",
+        "Sinh",
+        "Thai",
+        "Laoo",
+        "Khmr",
+        "Mymr",
+        "Tibt",
+        "Ethi",
+        "Armn",
+        "Geor",
+        "Hani",
+        "Hira",
+        "Kana",
+        "Hang"
+      ],
+      "roles": [
+        "body",
+        "display",
+        "ui",
+        "data",
+        "fallback"
+      ],
+      "discovery": {
+        "channel": "api",
+        "url": "https://api.fontsource.org/v1/fonts",
+        "notes": "Документированы фильтры subsets/category/weights/styles/variable; массивы с запятой означают AND. Деталь GET /v1/fonts/{id} даёт variants и unicodeRange. Полные файлы/лицензии получать из выбранного пакета или upstream; не угадывать семейство по ярлыку."
+      },
+      "license_evidence": [
+        "https://github.com/fontsource/fontsource",
+        "https://fontsource.org/docs/getting-started/install"
+      ],
+      "license_scope": "Каждый пакет и первоисточник проверяются отдельно; лицензия кода сайта/обёртки не лицензия шрифта.",
+      "caveats": "API документирован. Первый HTTP probe 24.10.2026 вернул 403; обычный запрос font_catalog.py затем получил metadata и cache. Доступность конкретного обращения не гарантирована; при отказе разрешённый upstream, без browser/обхода доступа.",
+      "documentation": [
+        "https://fontsource.org/docs/api/fonts",
+        "https://fontsource.org/docs/api/font-id",
+        "https://fontsource.org/docs/getting-started/subsets"
+      ],
+      "canonical_group": "google-fonts-distribution",
+      "last_observation": "2026-10-24: initial HTTP403; CLI query subsets=cyrillic/category=serif later received 68 metadata records and cache, without a browser. Files/license/render require separate checks."
+    },
+    {
+      "id": "noto",
+      "name": "Noto Dashboard / get-noto",
+      "url": "https://notofonts.github.io/",
+      "scripts": [
+        "Latn",
+        "Cyrl",
+        "Grek",
+        "Arab",
+        "Hebr",
+        "Deva",
+        "Beng",
+        "Guru",
+        "Gujr",
+        "Orya",
+        "Taml",
+        "Telu",
+        "Knda",
+        "Mlym",
+        "Sinh",
+        "Thai",
+        "Laoo",
+        "Khmr",
+        "Mymr",
+        "Tibt",
+        "Ethi",
+        "Armn",
+        "Geor",
+        "Hani",
+        "Hira",
+        "Kana",
+        "Hang",
+        "Adlm",
+        "Cher",
+        "Cans"
+      ],
+      "roles": [
+        "body",
+        "ui",
+        "fallback"
+      ],
+      "discovery": {
+        "channel": "repository",
+        "url": "https://github.com/notofonts/get-noto",
+        "notes": "Сначала конкретная письменность/locale и Sans/Serif/роль, затем соответствующий script repository и production release. Dashboard различает development/release. Получать нужную семью/конфигурацию, не всю коллекцию."
+      },
+      "license_evidence": [
+        "https://github.com/notofonts/get-noto",
+        "https://github.com/notofonts/noto-docs/blob/main/docs/website/use.md"
+      ],
+      "license_scope": "Noto публикуется под OFL; хранить лицензию соответствующего выпуска.",
+      "caveats": "Универсальность коллекции не означает наличие всех письмен в одном файле или автоматический выбор Noto для каждого проекта. CJK региональные файлы требуют отдельного выбора.",
+      "canonical_group": "noto"
+    },
+    {
+      "id": "sil",
+      "name": "SIL Language Technology Fonts",
+      "url": "https://software.sil.org/fonts/",
+      "scripts": [
+        "Latn",
+        "Cyrl",
+        "Grek",
+        "Arab",
+        "Hebr",
+        "Mymr",
+        "Ethi",
+        "Tibt",
+        "Tfng",
+        "Yiii"
+      ],
+      "roles": [
+        "body",
+        "ui",
+        "fallback"
+      ],
+      "discovery": {
+        "channel": "http",
+        "url": "https://software.sil.org/fonts/",
+        "notes": "Открытый региональный/письменный список → страница конкретного проекта → download/release, документация о charset и OpenType. Для редких письменностей найти профильный проект, для латиницы/кириллицы сравнить рисунок и предназначение."
+      },
+      "license_evidence": [
+        "https://software.sil.org/fonts/faq/"
+      ],
+      "license_scope": "Официальный FAQ указывает OFL для шрифтов SIL; получить license из конкретного релиза.",
+      "caveats": "Многие семьи рассчитаны на одну письменность плюс ограниченную латиницу. Literacy, scholarly и UI — разные роли; не назначать по известности."
+    },
+    {
+      "id": "velvetyne",
+      "name": "Velvetyne",
+      "url": "https://velvetyne.fr/",
+      "scripts": [
+        "Latn"
+      ],
+      "roles": [
+        "display"
+      ],
+      "discovery": {
+        "channel": "repository",
+        "url": "https://gitlab.com/velvetyne",
+        "notes": "Сайт/его index → выбранная работа → авторский проект GitLab, README, specimen и license; если сайт недоступен, программный поиск по домену/проектам авторов. Брать опубликованный файл/релиз, не демо-картинку."
+      },
+      "license_evidence": [
+        "https://gitlab.com/velvetyne/basteleur/-/blob/master/LICENSE.txt",
+        "https://gitlab.com/velvetyne/fungal/-/blob/691386aca8b67489575116262f5c3054705e1841/LICENSE.txt"
+      ],
+      "license_scope": "Лицензии по проекту: известны OFL и Bitstream Vera, нельзя объявлять всё OFL.",
+      "caveats": "В проверке сайт /about редиректил на /greve. Не выдумывать просмотр каталога; акцидентная экспериментальность не доказывает пригодность UI или кириллицы.",
+      "last_observation": "2026-10-24: website redirect to strike page; indexed author repository licenses available"
+    },
+    {
+      "id": "collletttivo",
+      "name": "Collletttivo",
+      "url": "https://www.collletttivo.it/",
+      "scripts": [
+        "Latn"
+      ],
+      "roles": [
+        "body",
+        "display",
+        "ui"
+      ],
+      "discovery": {
+        "channel": "http",
+        "url": "https://www.collletttivo.it/",
+        "notes": "Прочитать all typefaces и внутренние specimen/characters у подходящих работ; отбор по рисунку/ролям и документации, затем опубликованный download и вложенная license. API/tag-параметры не предполагаются."
+      },
+      "license_evidence": [
+        "https://www.collletttivo.it/licensing"
+      ],
+      "license_scope": "Издатель публикует OFL; действительные условия брать из LICENSE.txt выбранного download.",
+      "caveats": "Латинский образец не подтверждает нужную locale. Краткое изложение на сайте не заменяет точную лицензию; сохранение notices отличается от декоративного кредита в UI."
+    },
+    {
+      "id": "league",
+      "name": "The League of Moveable Type",
+      "url": "https://www.theleagueofmoveabletype.com/",
+      "scripts": [
+        "Latn"
+      ],
+      "roles": [
+        "body",
+        "display",
+        "data"
+      ],
+      "discovery": {
+        "channel": "repository",
+        "url": "https://github.com/theleagueof",
+        "notes": "Каталог → страница конкретного рисунка → официальный linked repository, лицензия, файлы и specimen. Для data/mono роли проверить цифры и различимость, для display — реальный заголовок."
+      },
+      "license_evidence": [
+        "https://www.theleagueofmoveabletype.com/manifesto",
+        "https://theleagueof.github.io/licenses/"
+      ],
+      "license_scope": "Издатель указывает OFL; проверять семейный license в репозитории/пакете.",
+      "caveats": "Не превращать небольшой курируемый каталог в постоянную колоду кандидатов; письменность и веса проверять по файлу, не по всей студии."
+    },
+    {
+      "id": "omnibus",
+      "name": "Omnibus-Type",
+      "url": "https://www.omnibus-type.com/",
+      "scripts": [
+        "Latn"
+      ],
+      "roles": [
+        "body",
+        "display",
+        "ui",
+        "data"
+      ],
+      "discovery": {
+        "channel": "repository",
+        "url": "https://github.com/Omnibus-Type",
+        "notes": "От типа задачи и рисунка найти семейные проекты, изучить specimen/README и актуальные fonts/releases; условия у конкретной семьи. Сопоставить плотность, ширины и курсивы, не выбирать только по названию."
+      },
+      "license_evidence": [
+        "https://github.com/Omnibus-Type/Asap/blob/master/OFL.txt"
+      ],
+      "license_scope": "Подтверждён OFL у Asap; не распространять лицензию одного примера на всю организацию.",
+      "caveats": "Scripts — направление каталога. Пример автора не является обязательным кандидатом каждого проекта; расширенная locale проверяется отдельно."
+    },
+    {
+      "id": "ektype",
+      "name": "Ek Type",
+      "url": "https://ektype.in/",
+      "scripts": [
+        "Latn",
+        "Deva",
+        "Beng",
+        "Guru",
+        "Gujr",
+        "Orya",
+        "Taml",
+        "Telu",
+        "Knda",
+        "Mlym",
+        "Arab"
+      ],
+      "roles": [
+        "body",
+        "display",
+        "ui"
+      ],
+      "discovery": {
+        "channel": "repository",
+        "url": "https://github.com/EkType",
+        "notes": "Раздел Free/Open Source → реальная семья и script-specific варианты → официальный repo/release и OFL. По задаче изучить текстовые и акцидентные проекты, specimen текущей письменности."
+      },
+      "license_evidence": [
+        "https://github.com/EkType/Baloo/blob/master/README.md",
+        "https://github.com/EkType/Mukta"
+      ],
+      "license_scope": "Open-source проекты проверяются по OFL конкретного семейства; коммерческие предложения студии не включать автоматически.",
+      "caveats": "Одна семейная марка может иметь отдельные имена/файлы для разных письмен. Указание Latin не закрывает индийскую локаль; Urdu использует Arabic script, но требует собственного теста."
+    },
+    {
+      "id": "tiro",
+      "name": "Tiro Typeworks Indigo",
+      "url": "https://github.com/TiroTypeworks/Indigo",
+      "scripts": [
+        "Latn",
+        "Deva",
+        "Beng",
+        "Guru",
+        "Knda",
+        "Taml",
+        "Telu"
+      ],
+      "roles": [
+        "body",
+        "display"
+      ],
+      "discovery": {
+        "channel": "repository",
+        "url": "https://github.com/TiroTypeworks/Indigo",
+        "notes": "Прочитать список script/language families, выбрать production compiled fonts из fonts либо Releases; использовать прилагаемые тестовые документы как дополнительное свидетельство, затем сравнить собственный текст. Сборка всего проекта не нужна."
+      },
+      "license_evidence": [
+        "https://raw.githubusercontent.com/TiroTypeworks/Indigo/master/LICENSES.txt"
+      ],
+      "license_scope": "fonts/sources/tools — OFL1.1; docs/resources/tests — Apache2; third-party НЕ лицензирован для использования вне repo.",
+      "caveats": "Hindi/Marathi/Sanskrit — разные языковые варианты Devanagari. Не копировать весь repo в проект и не переносить third-party материалы. Правильный repo Indigo; Indic-fonts не подтверждён."
+    },
+    {
+      "id": "aliftype",
+      "name": "Alif Type / Amiri",
+      "url": "https://aliftype.com/amiri/",
+      "scripts": [
+        "Arab",
+        "Latn"
+      ],
+      "roles": [
+        "body",
+        "display"
+      ],
+      "discovery": {
+        "channel": "repository",
+        "url": "https://github.com/aliftype/amiri",
+        "notes": "Арабский текстовый набор: официальный specimen/documentation → repo/releases → файл, license и нужные OpenType свойства. Для иной формы арабского письма искать соответствующий проект автора, не просто жирность."
+      },
+      "license_evidence": [
+        "https://github.com/aliftype/amiri",
+        "https://aliftype.com/amiri/"
+      ],
+      "license_scope": "Amiri — OFL; иные работы автора проверяются отдельно.",
+      "caveats": "Книжный Naskh не универсален для навигации или Urdu Nastaliq. Наличие cmap не подтверждает соединения, marks и Bidi в продукте."
+    },
+    {
+      "id": "cadsondemak",
+      "name": "Cadson Demak / Anuphan",
+      "url": "https://github.com/cadsondemak/Anuphan",
+      "scripts": [
+        "Thai",
+        "Latn"
+      ],
+      "roles": [
+        "body",
+        "display",
+        "ui"
+      ],
+      "discovery": {
+        "channel": "repository",
+        "url": "https://github.com/cadsondemak/Anuphan",
+        "notes": "Прочитать README и OFL, получить нужные опубликованные файлы; сравнить с другими подходящими Thai проектами из базовых каталогов по looped/loopless и реальному размеру."
+      },
+      "license_evidence": [
+        "https://github.com/cadsondemak/Anuphan"
+      ],
+      "license_scope": "У Anuphan подтверждён OFL1.1; не считать все продукты Cadson Demak открытыми.",
+      "caveats": "Thai loopless/looped влияет на узнаваемость букв. Не раздвигать знаки ради латинской эстетики и не обрезать надстрочные marks."
+    },
+    {
+      "id": "adobe-source",
+      "name": "Adobe open-source Source projects",
+      "url": "https://github.com/adobe-fonts",
+      "scripts": [
+        "Latn",
+        "Cyrl",
+        "Grek",
+        "Hani",
+        "Hira",
+        "Kana",
+        "Hang"
+      ],
+      "roles": [
+        "body",
+        "display",
+        "ui",
+        "data",
+        "fallback"
+      ],
+      "discovery": {
+        "channel": "repository",
+        "url": "https://github.com/adobe-fonts/source-han-sans",
+        "notes": "Искать подходящий открытый Source-проект. У Source Han прочитать download guide/configurations, выбрать language/region-specific release asset, не полный Super OTC по умолчанию. У других семей — их repo/specimen/license."
+      },
+      "license_evidence": [
+        "https://raw.githubusercontent.com/adobe-fonts/source-han-sans/master/LICENSE.txt",
+        "https://github.com/adobe-fonts/source-han-serif"
+      ],
+      "license_scope": "Source Han — OFL1.1 с RFN; условия каждого другого проекта проверять отдельно.",
+      "caveats": "Это авторские open-source repo, не подписочный Adobe Fonts. Hani требует locale-форм zh-CN/zh-TW/zh-HK/ja/ko; наличие Han-кодовой точки не доказывает правильный региональный рисунок.",
+      "documentation": [
+        "https://github.com/adobe-fonts/source-han-serif",
+        "https://github.com/adobe-fonts/source-han-sans/releases"
+      ]
+    },
+    {
+      "id": "naver-nanum",
+      "name": "Naver Nanum (официальные проекты)",
+      "url": "https://github.com/naver/nanumfont",
+      "scripts": [
+        "Hang",
+        "Latn",
+        "Hira",
+        "Kana"
+      ],
+      "roles": [
+        "ui",
+        "data"
+      ],
+      "discovery": {
+        "channel": "repository",
+        "url": "https://github.com/naver/nanumfont",
+        "notes": "Официальный README и вложенный OpenFontLicense → доступные fonts. Этот repo описывает coding face; остальные Nanum находить по официальным ссылкам издателя и проверять отдельно."
+      },
+      "license_evidence": [
+        "https://github.com/naver/nanumfont"
+      ],
+      "license_scope": "README допускает коммерческое включение и перераспространение под OFL; сохранить фактическую лицензию.",
+      "caveats": "Проверенный codingfont явно НЕ содержит Hanja. Поддержка отдельных японских знаков не делает его универсальной японской системой; для body/display искать подходящую отдельную семью."
+    },
+    {
+      "id": "culmus",
+      "name": "Culmus",
+      "url": "https://culmus.sourceforge.io/",
+      "scripts": [
+        "Hebr",
+        "Latn"
+      ],
+      "roles": [
+        "body",
+        "display",
+        "data"
+      ],
+      "discovery": {
+        "channel": "http",
+        "url": "https://culmus.sourceforge.io/",
+        "notes": "Официальная страница → актуальный release и sample → конкретная семья/файл. Прочитать copyright каждого шрифта и LICENSE соответствующего tarball до включения в web/app."
+      },
+      "license_evidence": [
+        "https://culmus.sourceforge.io/"
+      ],
+      "license_scope": "GPLv2, у некоторых — embedding exception. Это отдельная проверка условий, а не OFL-разрешение по умолчанию.",
+      "caveats": "Проверить исключение именно у используемого файла и тип встраивания. Для предсказуемого OFL-маршрута сравнить Hebrew кандидатов Noto/SIL/Google Fonts/IBM; не заменять все Hebrew одним системным fallback.",
+      "eligibility": "conditional_per_font_license"
+    },
+    {
+      "id": "fontshare-ofl",
+      "name": "Fontshare — только Open Source / OFL",
+      "url": "https://www.fontshare.com/",
+      "scripts": [
+        "Latn"
+      ],
+      "roles": [
+        "body",
+        "display",
+        "ui"
+      ],
+      "discovery": {
+        "channel": "http",
+        "url": "https://fontshare.com/licenses/sil-ofl",
+        "notes": "Искать лишь семьи, явно помеченные Open Source/SIL OFL; у карточки подтвердить тип, получить официальные файлы и license, при возможности найти upstream автора. Если JS-shell закрывает проверку, выбрать другой проверяемый источник."
+      },
+      "license_evidence": [
+        "https://fontshare.com/licenses/sil-ofl"
+      ],
+      "license_scope": "У сервиса есть OFL и proprietary ITF Free Font License. В open-source выборку входят только реально подтверждённые OFL файлы.",
+      "caveats": "Free personal/commercial use не означает open source. Не использовать недокументированный API, не объявлять всю библиотеку открытой и не пересказывать shell как проверенную карточку.",
+      "eligibility": "ofl_only",
+      "last_observation": "2026-10-24: license indexed/readable; /licenses page can return JS shell"
+    },
+    {
+      "id": "ibm-plex",
+      "name": "IBM Plex — официальный проект",
+      "url": "https://github.com/IBM/plex",
+      "scripts": [
+        "Latn",
+        "Cyrl",
+        "Grek",
+        "Arab",
+        "Hebr",
+        "Deva",
+        "Thai",
+        "Hani",
+        "Hira",
+        "Kana",
+        "Hang"
+      ],
+      "roles": [
+        "body",
+        "ui",
+        "data"
+      ],
+      "discovery": {
+        "channel": "repository",
+        "url": "https://github.com/IBM/plex",
+        "notes": "README сопоставляет письменность и отдельный package. Выбрать конкретную семью/скрипт, официальный релиз либо указанный npm package, затем проверить реальные веса/курсивы и файл."
+      },
+      "license_evidence": [
+        "https://github.com/IBM/plex/blob/master/LICENSE.txt"
+      ],
+      "license_scope": "Официальный проект OFL1.1; сохранять лицензию поставляемых файлов.",
+      "caveats": "Многоязычность проекта не означает все scripts в каждом Sans/Serif/Mono. Это один вариант согласованной системы, не обязательный корпоративный дефолт для нового бренда."
+    }
+  ]
+}

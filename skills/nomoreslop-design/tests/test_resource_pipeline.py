@@ -295,8 +295,8 @@ class PipelineTests(unittest.TestCase):
 
     def test_all_saved_sources_remain_and_no_mcp_is_declared_connected(self):
         sources = rp.source_list()
-        self.assertEqual(sources["count"], 36)
-        self.assertEqual(len({item["id"] for item in sources["sources"]}), 36)
+        self.assertEqual(sources["count"], 37)
+        self.assertEqual(len({item["id"] for item in sources["sources"]}), 37)
         self.assertEqual(rp.source_list(source_id="awwwards")["count"], 1)
         self.assertIn("not connected", sources["note"])
 

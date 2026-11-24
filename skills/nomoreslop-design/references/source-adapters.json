@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_on": "2026-10-21",
-  "description": "36 saved entry points (35 bookmarks + Awwwards). Capability and route map, not a universal scraper, live health dashboard, connected MCP declaration, or license grant.",
+  "updated_on": "2026-10-27",
+  "description": "37 entry points: 35 saved bookmarks + Awwwards + Colorsinspo. Capability and route map, not a universal scraper, connected MCP declaration, or license grant.",
   "transports": {
     "implemented": [
       "public HTTPS registry JSON inspection/fetch",
@@ -1472,6 +1472,59 @@
       "access_requirements": "Public selected route only; premium/member variants and third-party assets require their own rights/access review",
       "cli_capabilities": [
         "inspect (metadata only; no general source extraction)"
+      ]
+    },
+    {
+      "id": "colorsinspo",
+      "name": "Colorsinspo",
+      "saved_url": "https://colorsinspo.com/color-palettes",
+      "canonical_source": "colorsinspo",
+      "kinds": [
+        "palette",
+        "gradient",
+        "tokens",
+        "solid-color"
+      ],
+      "platforms": [
+        "web",
+        "mobile",
+        "desktop"
+      ],
+      "priority_for": [
+        "palette",
+        "gradient"
+      ],
+      "routes": [
+        {
+          "status": "public_page",
+          "url": "https://colorsinspo.com/color-palettes",
+          "notes": "Public SSR cards, hex values and taxonomy. Dedicated bounded parser lives in nomoreslop-color; generic inspect is metadata only."
+        },
+        {
+          "status": "public_page",
+          "url": "https://colorsinspo.com/gradients",
+          "notes": "Public gradient cards and CSS; follow selected detail links. No documented public API/MCP verified."
+        },
+        {
+          "status": "public_page",
+          "url": "https://colorsinspo.com/solid-color",
+          "notes": "Public solid-color cards; hue/temperature/lightness/saturation hubs and linked /color/HEX details. Separate colors are not complete theme roles."
+        }
+      ],
+      "last_verified": {
+        "date": "2026-10-27",
+        "scope": "HTTP 200 palette/gradient/taxonomy/detail pages; hex/CSS extracted. Neutral/monochromatic differed; palette page 2 repeated home. Not UI integration or full catalog validation. Solid-color listing, saturation/lightness hubs and linked /color/4c4f56 returned 200."
+      },
+      "source_files_retrieved_in_research": false,
+      "license_status": "Terms explicitly mention copying hex codes for projects; assets/editor/articles/third parties need their own rights. Not a blanket open-source catalog.",
+      "material_formats": [
+        "public HTML",
+        "HEX palette values",
+        "gradient CSS"
+      ],
+      "access_requirements": "Public permitted HTML only; no /api/ or blocked query routes, no browser/headless, no authorization or quota bypass.",
+      "cli_capabilities": [
+        "inspect (metadata only; palette extraction is in nomoreslop-color)"
       ]
     }
   ],

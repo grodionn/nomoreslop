@@ -70,7 +70,7 @@ class InstallTests(unittest.TestCase):
             script = root / "scripts" / SCRIPT.name
             script.parent.mkdir()
             shutil.copyfile(SCRIPT, script)
-            for skill in ("nomoreslop-writing", "nomoreslop-3d", "nomoreslop"):
+            for skill in ("nomoreslop-writing", "nomoreslop-3d", "nomoreslop", "nomoreslop-typography", "nomoreslop-color"):
                 with self.subTest(skill=skill):
                     source = root / "skills" / skill
                     source.mkdir(parents=True)
